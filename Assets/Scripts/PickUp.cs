@@ -4,15 +4,109 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform arm1;
+    public Transform arm2;
+    public LayerMask pickUpMask;
+    public Vector3 Direction { get; set; }
+    
+    //Objects for arm1 and arm2
+    private GameObject item1;
+    private GameObject item2;
+    
+    //Flags to indicate if arm slot is full, left is arm1, right is arm2
+    bool left;
+    bool right;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //Call Pick up item on user input
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
+        {
+            if(!left || !right)
+            {
+                pickUpItem();
+            }
+        }
+
+        //Call Drop item upon user input
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            dropItem();
+        }
+
+        //Call swap upon user input
+        if (Input.GetMouseButtonDown(1))
+        {
+            swapArms();
+        }
+    }
+    //Pick up an item
+    void pickUpItem()
+    {
+        Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, .3f, pickUpMask);
+        if (!left)
+        {
+            if (pickUpItem.gameObject.transform.position != arm2.position)
+            {
+                item1 = pickUpItem.gameObject;
+                item1.transform.position = arm1.position;
+                item1.transform.parent = transform;
+                left = true;
+            }
+        }
+        else
+        {
+            if (pickUpItem.gameObject.transform.position != arm1.position)
+            {
+                item2 = pickUpItem.gameObject;
+                item2.transform.position = arm2.position;
+                item2.transform.parent = transform;
+                right = true;
+            }
+        }
+    }
+
+    //Drop an item
+    void dropItem()
+    {
+        if (left && right)
+        {   
+            item1.transform.position = transform.position + Direction;
+            Debug.Log("Dropped left double");
+            item1.transform.parent = null;
+            item1 = null;
+            left = false;
+        }
+        else if (left && !right)
+        {
+            item1.transform.position = transform.position + Direction;
+            Debug.Log("Dropped left single");
+            item1.transform.parent = null;
+            item1 = null;
+            left = false;
+        }
+        else if (!left && right)
+        {
+            item2.transform.position = transform.position + Direction;
+            Debug.Log("Dropped right");
+            item2.transform.parent = null;
+            item2 = null;
+            right = false;
+        }
+    }
+
+    //Swap arms
+    void swapArms()
+    {
+        if (item2.transform.position == arm2.position)
+        {
+            item2.transform.position = arm1.position;
+            item1.transform.position = arm2.position;
+        }
+        else
+        {
+            item1.transform.position = arm1.position;
+            item2.transform.position = arm2.position;
+        }
     }
 }
