@@ -8,11 +8,19 @@ public class PickUp : MonoBehaviour
     public Transform arm2;
     public LayerMask pickUpMask;
     public Vector3 Direction { get; set; }
-    
+    private Rigidbody2D rigidBody;
+    public float projectileSpeed;
+   
+  
+
+   // public ProjectileBehaviour LaunchProjectilePrefab;
+    //public Transform LaunchOffset;
+ 
+
     //Objects for arm1 and arm2
     private GameObject item1;
     private GameObject item2;
-    
+
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
     bool left;
     bool right;
@@ -22,7 +30,7 @@ public class PickUp : MonoBehaviour
         //Call Pick up item on user input
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
         {
-            if(!left || !right)
+            if (!left || !right)
             {
                 pickUpItem();
             }
@@ -31,6 +39,7 @@ public class PickUp : MonoBehaviour
         //Call Drop item upon user input
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            //Instantiate(LaunchProjectilePrefab, LaunchOffset.position, transformm.rotation);
             dropItem();
         }
 
@@ -39,6 +48,8 @@ public class PickUp : MonoBehaviour
         {
             swapArms();
         }
+
+
     }
     //Pick up an item
     void pickUpItem()
@@ -48,9 +59,13 @@ public class PickUp : MonoBehaviour
         {
             if (pickUpItem.gameObject.transform.position != arm2.position)
             {
+
                 item1 = pickUpItem.gameObject;
+                item1.GetComponent<Weapon>().holding = 1;
                 item1.transform.position = arm1.position;
                 item1.transform.parent = transform;
+                if (item1.GetComponent<Rigidbody2D>())
+                    item1.GetComponent<Rigidbody2D>().simulated = false;
                 left = true;
             }
         }
@@ -61,6 +76,8 @@ public class PickUp : MonoBehaviour
                 item2 = pickUpItem.gameObject;
                 item2.transform.position = arm2.position;
                 item2.transform.parent = transform;
+                if (item2.GetComponent<Rigidbody2D>())
+                    item2.GetComponent<Rigidbody2D>().simulated = false;
                 right = true;
             }
         }
@@ -69,10 +86,17 @@ public class PickUp : MonoBehaviour
     //Drop an item
     void dropItem()
     {
+
+ 
         if (left && right)
-        {   
+        {
             item1.transform.position = transform.position + Direction;
             Debug.Log("Dropped left double");
+            if (item1.GetComponent<Rigidbody2D>())
+                item1.GetComponent<Rigidbody2D>().simulated = true;
+           
+            Destroy(item1, 3);
+            item1.GetComponent<Weapon>().holding = 0;
             item1.transform.parent = null;
             item1 = null;
             left = false;
@@ -81,6 +105,10 @@ public class PickUp : MonoBehaviour
         {
             item1.transform.position = transform.position + Direction;
             Debug.Log("Dropped left single");
+            if (item1.GetComponent<Rigidbody2D>())
+                item1.GetComponent<Rigidbody2D>().simulated = true;
+            Destroy(item1, 3);
+            item1.GetComponent<Weapon>().holding = 0;
             item1.transform.parent = null;
             item1 = null;
             left = false;
@@ -89,6 +117,10 @@ public class PickUp : MonoBehaviour
         {
             item2.transform.position = transform.position + Direction;
             Debug.Log("Dropped right");
+            if (item2.GetComponent<Rigidbody2D>())
+                item2.GetComponent<Rigidbody2D>().simulated = true;
+            Destroy(item2, 3);
+            item2.GetComponent<Weapon>().holding = 0;
             item2.transform.parent = null;
             item2 = null;
             right = false;
@@ -101,11 +133,15 @@ public class PickUp : MonoBehaviour
         if (item2.transform.position == arm2.position)
         {
             item2.transform.position = arm1.position;
+            item2.GetComponent<Weapon>().holding = 1;
+            item1.GetComponent<Weapon>().holding = 0;
             item1.transform.position = arm2.position;
         }
         else
         {
             item1.transform.position = arm1.position;
+            item1.GetComponent<Weapon>().holding = 1;
+            item2.GetComponent<Weapon>().holding = 0;
             item2.transform.position = arm2.position;
         }
     }
