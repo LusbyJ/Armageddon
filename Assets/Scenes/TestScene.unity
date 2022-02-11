@@ -2455,7 +2455,7 @@ MonoBehaviour:
   player: {fileID: 515397088}
   minClamp: {x: -999999, y: -999999}
   maxClamp: {x: 999999, y: 999999}
-  lerpSpeed: 0.1
+  lerpSpeed: 0.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
