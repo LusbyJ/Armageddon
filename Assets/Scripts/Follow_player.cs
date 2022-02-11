@@ -23,3 +23,4 @@ public class Follow_player : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position,position,lerpSpeed);
     }
 }
+
