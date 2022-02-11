@@ -118,6 +118,6 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
-        Flip();
+ //       Flip();
     }
 }
