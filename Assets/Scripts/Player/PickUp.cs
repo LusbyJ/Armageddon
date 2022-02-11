@@ -8,8 +8,7 @@ public class PickUp : MonoBehaviour
     public Transform arm2;
     public LayerMask pickUpMask;
     public Vector3 Direction { get; set; }
-    private Rigidbody2D rigidBody;
-    public float projectileSpeed;
+    private float speed = 20f;
    
   
 
@@ -87,38 +86,36 @@ public class PickUp : MonoBehaviour
     void dropItem()
     {
 
- 
-        if (left && right)
+        //If holding 2 arms or just the lest arm, Throw left arm
+        if ((left && right) || (left && !right))
         {
-            item1.transform.position = transform.position + Direction;
-            Debug.Log("Dropped left double");
             if (item1.GetComponent<Rigidbody2D>())
+            {
                 item1.GetComponent<Rigidbody2D>().simulated = true;
-           
+                item1.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+                item1.GetComponent<Rigidbody2D>().gravityScale = 2;
+                item1.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
+            //Destroy arm after 3 seconds
             Destroy(item1, 3);
             item1.GetComponent<Weapon>().holding = 0;
             item1.transform.parent = null;
             item1 = null;
             left = false;
         }
-        else if (left && !right)
-        {
-            item1.transform.position = transform.position + Direction;
-            Debug.Log("Dropped left single");
-            if (item1.GetComponent<Rigidbody2D>())
-                item1.GetComponent<Rigidbody2D>().simulated = true;
-            Destroy(item1, 3);
-            item1.GetComponent<Weapon>().holding = 0;
-            item1.transform.parent = null;
-            item1 = null;
-            left = false;
-        }
+      
         else if (!left && right)
         {
-            item2.transform.position = transform.position + Direction;
-            Debug.Log("Dropped right");
+            //Throw right arm
             if (item2.GetComponent<Rigidbody2D>())
+            {
                 item2.GetComponent<Rigidbody2D>().simulated = true;
+                item2.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+                item2.GetComponent<Rigidbody2D>().gravityScale = 2;
+                item2.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
+
+            //Destroy arm after 3 seconds
             Destroy(item2, 3);
             item2.GetComponent<Weapon>().holding = 0;
             item2.transform.parent = null;
