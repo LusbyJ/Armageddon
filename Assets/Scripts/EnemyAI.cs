@@ -15,14 +15,15 @@ public class EnemyAI : MonoBehaviour
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
 
-    private float jumpForce = 400f;
+    [SerializeField] private float jumpForce = 700f;
 
     Vector2 direction;
-    public float angle = .5f;
+    public float angle = .4f;
     [SerializeField] private LayerMask whatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform groundCheck;                           // A position marking where to check if the player is grounded.
     const float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool grounded;            // Whether or not the player is grounded.
+    private bool facingRight = true;
 
     public UnityEvent OnLandEvent;
 
@@ -36,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
-        InvokeRepeating("Jump", 0f, 1f);
+        InvokeRepeating("Jump", 0f, .75f);
     }
 
     void Jump()
@@ -80,6 +81,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void Flip()
+    {
+        if (direction.x > 0 && !facingRight)
+            facingRight = facingRight;
+        else if(direction.x < 0 && facingRight)
+            facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -98,7 +108,7 @@ public class EnemyAI : MonoBehaviour
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
-       Debug.Log("Y: " + direction.y);
+ //      Debug.Log("Y: " + direction.y);
 
         rb.AddForce(force);
 
@@ -108,5 +118,6 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+        Flip();
     }
 }
