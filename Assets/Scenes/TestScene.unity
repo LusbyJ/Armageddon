@@ -2276,6 +2276,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &515397088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5461871509899194071, guid: f39f0036b06076de89a36f090ddaa33c, type: 3}
+  m_PrefabInstance: {fileID: 21283256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &516175805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,10 +2452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e66e555daa0f4948981f33677e9434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  minClamp: {x: -25.5, y: 2.5}
-  maxClamp: {x: 25.5, y: 55}
-  lerpSpeed: 0.4
+  player: {fileID: 515397088}
+  minClamp: {x: -999999, y: -999999}
+  maxClamp: {x: 999999, y: 999999}
+  lerpSpeed: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

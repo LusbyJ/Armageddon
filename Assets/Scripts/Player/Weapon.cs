@@ -12,16 +12,16 @@ public class Weapon : MonoBehaviour {
     public int waitTime;
     bool executed = true;
 
+    Vector3 shootDirection;
     Vector2 lookDirection;
     float lookAngle;
 
     void Update()
     {
-        //Get user input from mouse to determine direction shooting
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        firePoint.rotation = Quaternion.Euler(0, 0, lookAngle);
+        shootDirection = Input.mousePosition;
+        shootDirection.z = 0.0f;
+        shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+        shootDirection = shootDirection-transform.position;
 
         //Check if the mouse is clicked and weapon is being held
         if (Input.GetMouseButtonDown(0) && holding == 1 && executed)
@@ -34,10 +34,10 @@ public class Weapon : MonoBehaviour {
     private IEnumerator Shoot()
     {
         executed = false;
-        GameObject bulletClone = Instantiate(bullet);
-        bulletClone.transform.position = firePoint.position;
-        bulletClone.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
-        bulletClone.GetComponent<Rigidbody2D>().velocity = firePoint.right * bulletSpeed;
+        GameObject bulletInstance = Instantiate(bullet);
+        bulletInstance.transform.position = firePoint.position;
+        bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+        bulletInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
         yield return new WaitForSeconds(waitTime);
         executed = true;
      
