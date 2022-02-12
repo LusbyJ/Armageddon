@@ -17,11 +17,11 @@ public class PickUp : MonoBehaviour
  
 
     //Objects for arm1 and arm2
-    private GameObject item1;
-    private GameObject item2;
+    public GameObject item1;
+    public GameObject item2;
 
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
-    bool left;
+    public static bool left;
     bool right;
 
     void Update()
@@ -35,7 +35,7 @@ public class PickUp : MonoBehaviour
             }
         }
 
-        //Call Drop item upon user input
+        //Call throw item upon user input
         if (Input.GetKeyDown(KeyCode.Q))
         {
             throwItem();
@@ -46,8 +46,6 @@ public class PickUp : MonoBehaviour
         {
             swapArms();
         }
-
-
     }
     //Pick up an item
     void pickUpItem()
@@ -88,25 +86,29 @@ public class PickUp : MonoBehaviour
         //If holding 2 arms or just the lest arm, Throw left arm
         if ((left && right) || (left && !right))
         {
-            if (item1.GetComponent<Rigidbody2D>())
+            if(item1 != null)
             {
-                item1.GetComponent<Rigidbody2D>().simulated = true;
-                item1.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
-                item1.GetComponent<Rigidbody2D>().gravityScale = 2;
-                item1.GetComponent<BoxCollider2D>().isTrigger = false;
-            }
+                if (item1.GetComponent<Rigidbody2D>() != null)
+                {
+                    item1.GetComponent<Rigidbody2D>().simulated = true;
+                    item1.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+                    item1.GetComponent<Rigidbody2D>().gravityScale = 2;
+                    item1.GetComponent<BoxCollider2D>().isTrigger = false;
+                }
+            
             //Destroy arm after 3 seconds
             Destroy(item1, 3);
             item1.GetComponent<Weapon>().holding = 0;
             item1.transform.parent = null;
             item1 = null;
             left = false;
+            }
         }
       
         else if (!left && right)
         {
             //Throw right arm
-            if (item2.GetComponent<Rigidbody2D>())
+            if (item2.GetComponent<Rigidbody2D>() != null)
             {
                 item2.GetComponent<Rigidbody2D>().simulated = true;
                 item2.GetComponent<Rigidbody2D>().velocity = transform.right * speed;

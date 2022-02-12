@@ -182,4 +182,4 @@ MonoBehaviour:
   damage: 15
   bulletSpeed: 10
   waitTime: 2
-  integrity: 100
+  integrity: 20

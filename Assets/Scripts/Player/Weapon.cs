@@ -51,6 +51,12 @@ public class Weapon : MonoBehaviour {
             //Call Blink to start arm blinking before destroying it
             InvokeRepeating("Blink", 0 , 0.03f);
             Destroy(gameObject, 3);
+            holding = 0;
+            PickUp.left = false;
+            //gameObject.transform.parent = null;
+            GetComponent<PickUp>().item1 = null;
+            
+            
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
