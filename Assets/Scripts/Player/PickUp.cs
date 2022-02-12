@@ -38,8 +38,7 @@ public class PickUp : MonoBehaviour
         //Call Drop item upon user input
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            //Instantiate(LaunchProjectilePrefab, LaunchOffset.position, transformm.rotation);
-            dropItem();
+            throwItem();
         }
 
         //Call swap upon user input
@@ -83,7 +82,7 @@ public class PickUp : MonoBehaviour
     }
 
     //Drop an item
-    void dropItem()
+    void throwItem()
     {
 
         //If holding 2 arms or just the lest arm, Throw left arm
