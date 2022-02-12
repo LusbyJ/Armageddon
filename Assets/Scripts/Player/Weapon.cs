@@ -46,33 +46,16 @@ public class Weapon : MonoBehaviour {
         Debug.Log("Weapon integrity = " + integrity);
         
         //If integrity reaches 0, start sequence to destroy item
-        if(integrity <= 0)
+        if(integrity == 0)
         {
-            //Call Blink to start arm blinking before destroying it
-            InvokeRepeating("Blink", 0 , 0.03f);
-            Destroy(gameObject, 3);
+            Destroy(gameObject);
             holding = 0;
             PickUp.left = false;
-            //gameObject.transform.parent = null;
             GetComponent<PickUp>().item1 = null;
-            
             
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
     }
-
-    //Make Arm blink before it explodes
-    void Blink() {
-        if(gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }
     
-
 }
