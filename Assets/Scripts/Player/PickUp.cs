@@ -22,7 +22,7 @@ public class PickUp : MonoBehaviour
 
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
     public static bool left;
-    bool right;
+    public bool right;
 
     void Update()
     {
@@ -82,7 +82,6 @@ public class PickUp : MonoBehaviour
     //Drop an item
     void throwItem()
     {
-
         //If holding 2 arms or just the lest arm, Throw left arm
         if ((left && right) || (left && !right))
         {

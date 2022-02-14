@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 5461871509899194089}
   - component: {fileID: 5461871509899194088}
   - component: {fileID: 2786522001136471699}
+  - component: {fileID: 4045627737422943446}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c5ab5203cfd043c9aeb0b8c5ed5778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 100
   m_JumpForce: 700
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
@@ -257,7 +259,21 @@ MonoBehaviour:
   pickUpMask:
     serializedVersion: 2
     m_Bits: 8
-  projectileSpeed: 3
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+--- !u!114 &4045627737422943446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461871509899194067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d293fb4c723d6f3b8fc48031e68aa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1 &5461871510700563397
 GameObject:
   m_ObjectHideFlags: 0

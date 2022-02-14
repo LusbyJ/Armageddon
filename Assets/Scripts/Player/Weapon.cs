@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour {
     public Transform firePoint;
     public GameObject bullet;
     public int holding;
-    public int damage;
+    public int damage;   //damage done to integrity when shot
     public int bulletSpeed;
     public int waitTime;
     public int integrity;
@@ -36,13 +36,13 @@ public class Weapon : MonoBehaviour {
     private IEnumerator Shoot()
     {
         executed = false;
-        GameObject bulletInstance = Instantiate(bullet);
-        bulletInstance.transform.position = firePoint.position;
-        bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
-        bulletInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
+        bullet= Instantiate(bullet, firePoint.position, firePoint.rotation);
+        bullet.transform.position = firePoint.position;
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
         
         //Lose integrity when shooting
-        integrity = integrity - damage/2;
+        integrity = integrity - damage;
         Debug.Log("Weapon integrity = " + integrity);
         
         //If integrity reaches 0, start sequence to destroy item
@@ -56,6 +56,16 @@ public class Weapon : MonoBehaviour {
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
+    }
+
+    public int getIntegrity()
+    {
+        return integrity;
+    }
+
+    public void setIntegrity()
+    {
+        integrity = integrity - 10;
     }
     
 }
