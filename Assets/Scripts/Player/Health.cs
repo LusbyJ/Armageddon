@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int health = 3;
-    
+
     public void TakeDamage(int damage)
     {
         if(PickUp.left)
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
             }
             Debug.Log("Arm1 integrity =" + item.integrity);
         }
-        else if(!PickUp.left && GetComponent<PickUp>().right)
+        else if(!PickUp.left && PickUp.right)
         {
             Weapon item2 = GetComponent<PickUp>().item2.GetComponent<Weapon>();
             item2.integrity -= damage;
@@ -32,11 +32,11 @@ public class Health : MonoBehaviour
                 GetComponent<PickUp>().item2.GetComponent<Weapon>().holding = 0;
                 GetComponent<PickUp>().item2.transform.parent = null;
                 GetComponent<PickUp>().item2 = null;
-                GetComponent<PickUp>().right = false;
+                PickUp.right = false;
             }
             Debug.Log("Arm1 integrity =" + item2.integrity);
-       
-           
+
+
         }
         else
         {
@@ -47,13 +47,13 @@ public class Health : MonoBehaviour
                 Die();
             }
         }
-        
-      
+
+
     }
 
     void Die()
     {
         Destroy(gameObject);
     }
-   
+
 }

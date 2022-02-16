@@ -9,12 +9,12 @@ public class PickUp : MonoBehaviour
     public LayerMask pickUpMask;
     public Vector3 Direction { get; set; }
     private float speed = 20f;
-   
-  
+
+
 
    // public ProjectileBehaviour LaunchProjectilePrefab;
     //public Transform LaunchOffset;
- 
+
 
     //Objects for arm1 and arm2
     public GameObject item1;
@@ -22,7 +22,7 @@ public class PickUp : MonoBehaviour
 
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
     public static bool left;
-    public bool right;
+    public static bool right;
 
     void Update()
     {
@@ -94,7 +94,7 @@ public class PickUp : MonoBehaviour
                     item1.GetComponent<Rigidbody2D>().gravityScale = 2;
                     item1.GetComponent<BoxCollider2D>().isTrigger = false;
                 }
-            
+
             //Destroy arm after 3 seconds
             Destroy(item1, 3);
             item1.GetComponent<Weapon>().holding = 0;
@@ -103,7 +103,7 @@ public class PickUp : MonoBehaviour
             left = false;
             }
         }
-      
+
         else if (!left && right)
         {
             //Throw right arm
