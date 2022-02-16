@@ -13,6 +13,8 @@ public class HudController : MonoBehaviour
     public GameObject emergencyLight2;
     public GameObject hudArmBarMain;
     public GameObject hudArmBarBack;
+    public GameObject hudArmMainIcon;
+    public GameObject hudArmBackIcon;
     private Weapon arm1;
     private Weapon arm2;
     // Start is called before the first frame update
