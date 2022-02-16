@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
     public int damage;   //damage done to integrity when shot
     public int bulletSpeed;
     public int waitTime;
+    public int maxIntegrity;
     public int integrity;
     bool executed = true;
 
