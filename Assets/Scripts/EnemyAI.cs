@@ -38,6 +38,15 @@ public class EnemyAI : MonoBehaviour
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("Jump", 0f, .75f);
+        InvokeRepeating("CheckDir", 0f, .5f);
+    }
+
+    void CheckDir()
+    {
+        if (direction.x > 0 && !facingRight)
+            Flip();
+        else if (direction.x < 0 && facingRight)
+            Flip();
     }
 
     void Jump()
@@ -83,11 +92,8 @@ public class EnemyAI : MonoBehaviour
 
     void Flip()
     {
-        if (direction.x > 0 && !facingRight)
-            facingRight = facingRight;
-        else if(direction.x < 0 && facingRight)
-            facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+        facingRight = !facingRight;
     }
 
     // Update is called once per frame
@@ -118,6 +124,5 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
- //       Flip();
     }
 }
