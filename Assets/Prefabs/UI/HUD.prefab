@@ -351,6 +351,8 @@ MonoBehaviour:
   emergencyLight2: {fileID: 4404622914314159528}
   hudArmBarMain: {fileID: 4404622914540712487}
   hudArmBarBack: {fileID: 4404622914349115894}
+  hudArmMainIcon: {fileID: 4404622915205897211}
+  hudArmBackIcon: {fileID: 4404622913820008352}
 --- !u!1 &4404622914314159528
 GameObject:
   m_ObjectHideFlags: 0
