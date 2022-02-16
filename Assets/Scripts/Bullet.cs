@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
         if(enemy != null)
         {
             enemy.TakeDamage(damage);
-            
         }
+        
 
     }
 }
