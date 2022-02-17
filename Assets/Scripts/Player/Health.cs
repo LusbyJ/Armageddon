@@ -40,15 +40,13 @@ public class Health : MonoBehaviour
         }
         else
         {
-            health -= damage;
-             Debug.Log(health);
+            health -= 1;
+             Debug.Log("Players health = " + health);
             if(health <= 0)
             {
                 Die();
             }
         }
-
-
     }
 
     void Die()

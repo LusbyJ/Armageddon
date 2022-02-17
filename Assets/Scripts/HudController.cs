@@ -27,22 +27,28 @@ public class HudController : MonoBehaviour
     void Update()
     {
 
-      if(PickUp.left){
-        hudArmMain.SetActive(true);
-        arm1=character.GetComponent<PickUp>().item1.GetComponent<Weapon>();
-        float perc=Mathf.Clamp((float)arm1.integrity/(float)arm1.maxIntegrity,0,1);
-        hudArmBarMain.transform.localScale=new Vector3(perc,1,1);
-      }else{
-        hudArmMain.SetActive(false);
-      }
-      if(PickUp.right){
-        hudArmBack.SetActive(true);
-        arm2=character.GetComponent<PickUp>().item2.GetComponent<Weapon>();
-        float perc=Mathf.Clamp((float)arm2.integrity/(float)arm2.maxIntegrity,0,1);
-        hudArmBarBack.transform.localScale=new Vector3(perc,1,1);
-      }else{
-        hudArmBack.SetActive(false);
-      }
+        if (character.GetComponent<PickUp>().item1 != null)
+        {
+            hudArmMain.SetActive(true);
+            arm1 = character.GetComponent<PickUp>().item1.GetComponent<Weapon>();
+            float perc = Mathf.Clamp((float)arm1.integrity / (float)arm1.maxIntegrity, 0, 1);
+            hudArmBarMain.transform.localScale = new Vector3(perc, 1, 1);
+        }
+        else
+        {
+            hudArmMain.SetActive(false);
+        }
+        if (character.GetComponent<PickUp>().item2 != null)
+        {
+            hudArmBack.SetActive(true);
+            arm2 = character.GetComponent<PickUp>().item2.GetComponent<Weapon>();
+            float perc = Mathf.Clamp((float)arm2.integrity / (float)arm2.maxIntegrity, 0, 1);
+            hudArmBarBack.transform.localScale = new Vector3(perc, 1, 1);
+        }
+        else
+        {
+            hudArmBack.SetActive(false);
+        }
 
     }
 }

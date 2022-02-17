@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour {
         Debug.Log("Weapon integrity = " + integrity);
         
         //If integrity reaches 0, start sequence to destroy item
-        if(integrity == 0)
+        if(integrity <= 0)
         {
             Destroy(gameObject);
             holding = 0;
