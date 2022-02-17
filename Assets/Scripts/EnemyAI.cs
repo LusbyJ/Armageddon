@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         if (seeker.IsDone())
-            seeker.StartPath(rb.position, target.position-distFromTarget, OnPathComplete);
+            seeker.StartPath(rb.position, target.position - distFromTarget, OnPathComplete);
 
     }
 
@@ -130,6 +130,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (path == null)
             return;
+
 
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
