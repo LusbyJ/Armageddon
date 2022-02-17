@@ -26,7 +26,7 @@ public class MeleeAttack : MonoBehaviour
             }
             if(target.position.x > transform.position.x)
             {
-                //Write some code so that the player is knockedback to the right.
+                //Write some code so that the player is knockedback to the right
             }
             else if(target.position.x < transform.position.x)
             {

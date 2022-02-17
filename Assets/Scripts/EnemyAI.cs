@@ -50,9 +50,9 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(target.position, rb.position) < .5 && Vector3.Distance(target.position, rb.position) > -.5)
         {
             if (target.position.x >= rb.position.x)
-                distFromTarget = Vector3.right;
+                distFromTarget = Vector3.right * 2;
             else if (target.position.x < rb.position.x)
-                distFromTarget = Vector3.left;
+                distFromTarget = Vector3.left * 2;
         }
         else
             distFromTarget = Vector3.zero;
