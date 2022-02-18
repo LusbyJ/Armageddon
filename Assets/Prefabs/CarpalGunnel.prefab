@@ -181,7 +181,7 @@ MonoBehaviour:
   holding: 0
   damage: 2
   bulletSpeed: 20
-  waitTime: 0
+  waitTime: 0.2
   maxIntegrity: 200
   integrity: 200
   weaponIcon: {fileID: 21300000, guid: 337d7ed060e80e1449aa52bf47789440, type: 3}

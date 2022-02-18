@@ -8,15 +8,15 @@ public class Weapon : MonoBehaviour {
     public GameObject bullet;
     public int holding = 0;
     public int damage;   //damage done to integrity when shot
-    public int bulletSpeed;
-    public int waitTime;
+    public float bulletSpeed;
+    public float waitTime;
     public int maxIntegrity;
     public int integrity;
     public Sprite weaponIcon;
     bool executed = true;
 
     Vector3 shootDirection;
-    Vector2 lookDirection;
+ 
     float lookAngle;
 
     void Update()
@@ -28,9 +28,10 @@ public class Weapon : MonoBehaviour {
 
         //Check if the mouse is clicked and weapon is being held
         //Only shoot if the co_routine has finished executing
-        if (Input.GetMouseButtonDown(0) && holding == 1 && executed)
+        if (Input.GetMouseButton(0) && holding == 1 && executed)
         {
             StartCoroutine("Shoot");
+            GetComponent<Weapon>().shootDirection = shootDirection;
         }
     }
 
@@ -40,8 +41,25 @@ public class Weapon : MonoBehaviour {
         executed = false;
         bullet= Instantiate(bullet, firePoint.position, firePoint.rotation);
         bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        Debug.Log(shootDirection);
+
+        if(shootDirection.x < 1)
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * 3), shootDirection.y * (bulletSpeed * 3));
+            Debug.Log("shooting close");
+        }
+        else if (shootDirection.x < 2)
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*(3/2)), shootDirection.y * (bulletSpeed*(3/2)));
+            Debug.Log("shooting close");
+        }
+        else
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed/2, shootDirection.y * bulletSpeed/2);
+            Debug.Log("shooting far");
+        }
+        
 
 
         //Lose integrity when shooting
