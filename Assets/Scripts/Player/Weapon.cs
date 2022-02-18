@@ -30,8 +30,11 @@ public class Weapon : MonoBehaviour {
         //Only shoot if the co_routine has finished executing
         if (Input.GetMouseButton(0) && holding == 1 && executed)
         {
+            if(shootDirection.x > 0.5 || shootDirection.x < -0.5)
+            {
             StartCoroutine("Shoot");
             GetComponent<Weapon>().shootDirection = shootDirection;
+            }
         }
     }
 
@@ -42,8 +45,7 @@ public class Weapon : MonoBehaviour {
         bullet= Instantiate(bullet, firePoint.position, firePoint.rotation);
         bullet.transform.position = firePoint.position;
 
-        adjustShotSpeed(shootDirection,bullet);
-        
+        adjustShotSpeed(shootDirection, bullet);
         //Change the rotation of the bullet in relation to angle shot
         if (shootDirection.x > 0)
             bullet.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -79,11 +81,15 @@ public class Weapon : MonoBehaviour {
         if (shootDirection.x < -1)
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed / 4, shootDirection.y * bulletSpeed / 4);
         
-        if (shootDirection.x < 1 && shootDirection.x > -2)
+        if (shootDirection.x < 0 && shootDirection.x > -2)
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * 3), shootDirection.y * (bulletSpeed * 3));
 
-        else if (shootDirection.x < 2)
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * (3/2)), shootDirection.y * (bulletSpeed * (3 / 2)));
+        
+        else if (shootDirection.x < 1 && shootDirection.x >= 0.5)
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*10), shootDirection.y * (bulletSpeed*10));
+
+        else if (shootDirection.x < 2 && shootDirection.x >= 1)
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*6), shootDirection.y * (bulletSpeed*6));
 
         else
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
