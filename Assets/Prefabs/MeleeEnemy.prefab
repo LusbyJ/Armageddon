@@ -182,7 +182,9 @@ MonoBehaviour:
   distFromTarget: {x: 0, y: 0, z: 0}
   speed: 400
   nextWaypointDistance: 1
-  jumpForce: 700
+  waitTime: 0.1
+  timer: 0
+  jumpForce: 750
   angle: 0.4
   whatIsGround:
     serializedVersion: 2
@@ -359,4 +361,4 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
-  target: {fileID: 0}
+  target: {fileID: 5461871509899194071, guid: f39f0036b06076de89a36f090ddaa33c, type: 3}
