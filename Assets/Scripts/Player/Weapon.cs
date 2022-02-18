@@ -86,10 +86,10 @@ public class Weapon : MonoBehaviour {
 
         
         else if (shootDirection.x < 1 && shootDirection.x >= 0.5)
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*10), shootDirection.y * (bulletSpeed*10));
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*4), shootDirection.y * (bulletSpeed*4));
 
         else if (shootDirection.x < 2 && shootDirection.x >= 1)
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*6), shootDirection.y * (bulletSpeed*6));
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*2), shootDirection.y * (bulletSpeed*2));
 
         else
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
