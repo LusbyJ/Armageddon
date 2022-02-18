@@ -179,7 +179,9 @@ MonoBehaviour:
   firePoint: {fileID: 7764446224263117211}
   bullet: {fileID: 5674178122323808298, guid: 8612f3f6ce1c36ea99c6b3403ef4eb4d, type: 3}
   holding: 0
-  damage: 5
+  damage: 2
   bulletSpeed: 20
   waitTime: 0
-  integrity: 20
+  maxIntegrity: 200
+  integrity: 200
+  weaponIcon: {fileID: 21300000, guid: 337d7ed060e80e1449aa52bf47789440, type: 3}

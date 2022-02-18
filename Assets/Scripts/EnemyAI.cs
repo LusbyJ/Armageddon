@@ -7,13 +7,13 @@ using Pathfinding;
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
+    public Vector3 distFromTarget;
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
 
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
 
     [SerializeField] private float jumpForce = 700f;
 
@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform groundCheck;                           // A position marking where to check if the player is grounded.
     const float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool grounded;            // Whether or not the player is grounded.
-    private bool facingRight = true;
+    public bool facingRight = true;
 
     public UnityEvent OnLandEvent;
 
@@ -37,9 +37,40 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
+        InvokeRepeating("CheckTargetDir", 0f, .5f);
         InvokeRepeating("Jump", 0f, .75f);
+        InvokeRepeating("CheckDir", 0f, .5f);
     }
 
+
+    // This Checks to see which direction the player is in relation to the enemy
+    // so that the enemy can stop before just ramming into the player
+    void CheckTargetDir()
+    {
+        if (Vector3.Distance(target.position, rb.position) < .5 && Vector3.Distance(target.position, rb.position) > -.5)
+        {
+            if (target.position.x >= rb.position.x)
+                distFromTarget = Vector3.right * 2;
+            else if (target.position.x < rb.position.x)
+                distFromTarget = Vector3.left * 2;
+        }
+        else
+            distFromTarget = Vector3.zero;
+    }
+
+
+    // This checks the direction that the enemy is traveling in and flips him accordingly.
+    void CheckDir()
+    {
+        if (direction.x > 0 && !facingRight)
+            Flip();
+        else if (direction.x < 0 && facingRight)
+            Flip();
+    }
+
+
+
+    // Checks whether the enemy needs to jumo or not.
     void Jump()
     {
         bool wasGrounded = grounded;
@@ -58,19 +89,24 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (direction.y > angle && grounded)
+        if (direction.y > angle && grounded)// Checks to see the path the enemy is trying to follow is point upward and if the enemy is grouded.
         {
             grounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));
         }
     }
 
+
+
+    // Updates the path the enemy is traveling on. Will attempt to follow the player no matter where they are on the map.
+    // the distFromTarget is updated based on which side the player is on in relation to the enemy.
     void UpdatePath()
     {
         if (seeker.IsDone())
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(rb.position, target.position - distFromTarget, OnPathComplete);
 
     }
+
 
     void OnPathComplete(Path p)
     {
@@ -81,13 +117,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
+    // Flips the enemy around so that enemy is not walking backwards.
     void Flip()
     {
-        if (direction.x > 0 && !facingRight)
-            facingRight = facingRight;
-        else if(direction.x < 0 && facingRight)
-            facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+        facingRight = !facingRight;
     }
 
     // Update is called once per frame
@@ -95,20 +130,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (path == null)
             return;
-        if(currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
+
 
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
-
- //      Debug.Log("Y: " + direction.y);
 
         rb.AddForce(force);
 
@@ -118,6 +143,5 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
- //       Flip();
     }
 }
