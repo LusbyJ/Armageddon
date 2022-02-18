@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public float waitTime = .1f;
+    public float timer = 0.0f;
 
     Path path;
     int currentWaypoint = 0;
@@ -47,15 +49,23 @@ public class EnemyAI : MonoBehaviour
     // so that the enemy can stop before just ramming into the player
     void CheckTargetDir()
     {
-        if (Vector3.Distance(target.position, rb.position) < .5 && Vector3.Distance(target.position, rb.position) > -.5)
+        timer += Time.deltaTime;
+        Debug.Log(timer);
+        if (timer < waitTime || timer >= waitTime + .05)
         {
             if (target.position.x >= rb.position.x)
                 distFromTarget = Vector3.right * 2;
             else if (target.position.x < rb.position.x)
                 distFromTarget = Vector3.left * 2;
+            if (timer >= waitTime + .05)
+            {
+                timer = 0;
+            }
         }
-        else
+        else if (timer >= waitTime)
+        {
             distFromTarget = Vector3.zero;
+        }
     }
 
 
