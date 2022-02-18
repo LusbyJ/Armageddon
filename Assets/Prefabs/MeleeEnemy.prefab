@@ -60,8 +60,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5254351367033710154}
   m_LocalRotation: {x: 0, y: 0.00000026226834, z: 0, w: 1}
-  m_LocalPosition: {x: 13.490095, y: 0.8259803, z: 0}
-  m_LocalScale: {x: 0.2858, y: 0.62196195, z: 1}
+  m_LocalPosition: {x: 13.578, y: 0.842, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 821018516131688464}
   - {fileID: 4438970023667386490}
@@ -108,9 +108,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.43313155, g: 0.51156497, b: 0.9433962, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 21300000, guid: 0b0131d9c26e26f45aa18f304bee4634, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -157,14 +157,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.564}
   m_EdgeRadius: 0
 --- !u!114 &821018516559084538
 MonoBehaviour:
@@ -260,8 +260,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7025783236121208394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.41, y: 0.042, z: 0}
-  m_LocalScale: {x: 0.97683686, y: 0.1429791, z: 1}
+  m_LocalPosition: {x: -0.037, y: 0.046, z: 0}
+  m_LocalScale: {x: 1, y: 0.1429791, z: 1}
   m_Children: []
   m_Father: {fileID: 5254351367033710152}
   m_RootOrder: 1
@@ -306,7 +306,7 @@ SpriteRenderer:
   m_SortingLayerID: -460363799
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -314,7 +314,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &7421820439736324380
