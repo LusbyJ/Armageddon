@@ -2983,7 +2983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4404622914013170416, guid: 036ae41f50d034a4fb64b2ead9eb0fba, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4404622914013170416, guid: 036ae41f50d034a4fb64b2ead9eb0fba, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4791,6 +4791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeEnemyPrefab: {fileID: 5254351367033710154, guid: e52b19726c556c145a5783f67627a865, type: 3}
   respawnTime: 1
+  screenBounds: {x: 0, y: 0}
+  character: {fileID: 5692770}
 --- !u!4 &1147788265
 Transform:
   m_ObjectHideFlags: 0
@@ -5081,7 +5083,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100295962937853051, guid: dd8569af9c6e335628bcbea7c6260141, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100295962937853051, guid: dd8569af9c6e335628bcbea7c6260141, type: 3}
       propertyPath: m_LocalPosition.x
