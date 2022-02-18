@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    
+    public GameObject character;
     public Transform arm1;
     public Transform arm2;
     public LayerMask pickUpMask;
@@ -25,6 +25,7 @@ public class PickUp : MonoBehaviour
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
     public static bool left;
     public static bool right;
+    bool flip;
 
     void Update()
     {
@@ -33,7 +34,18 @@ public class PickUp : MonoBehaviour
         {
             if (!left || !right)
             {
+                if (character.GetComponent<PlayerController>().m_FacingRight == false)
+                {
+                    flip = true;
+                    
+                }
+                else
+                {
+                    flip = false;
+                }
+                Debug.Log("what");
                 pickUpItem();
+            
             }
         }
 
@@ -53,11 +65,19 @@ public class PickUp : MonoBehaviour
     void pickUpItem()
     {
         Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, .3f, pickUpMask);
+        
+        //If player is facing left rotate arm 180 before picking up
+        if (flip)
+        {
+            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        
+        //If no arm on left pick up left arm
         if (!left)
         {
             if (pickUpItem.gameObject.transform.position != arm2.position)
             {
-                if(item1 == null)
+                if (item1 == null)
                 {
                     item1 = pickUpItem.gameObject;
                     item1.GetComponent<Weapon>().holding = 1;
@@ -77,9 +97,11 @@ public class PickUp : MonoBehaviour
                         item2.GetComponent<Rigidbody2D>().simulated = false;
                     left = true;
                 }
+
                
             }
         }
+        //If no arm on right pick up right arm
         else if (!right)
         {
             if (pickUpItem.gameObject.transform.position != arm1.position)

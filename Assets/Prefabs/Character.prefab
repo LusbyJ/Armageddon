@@ -236,6 +236,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 5461871509079025292}
   m_CeilingCheck: {fileID: 5461871510700563398}
   m_CrouchDisableCollider: {fileID: 0}
+  m_FacingRight: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c705b4bb8137391a7f430d588423b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 5461871509899194067}
   arm1: {fileID: 6558204674863389122}
   arm2: {fileID: 4269729739014519280}
   pickUpMask:
