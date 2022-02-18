@@ -8293,6 +8293,10 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: mouseBias
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
       propertyPath: maxClamp.x
       value: 20
       objectReference: {fileID: 0}
