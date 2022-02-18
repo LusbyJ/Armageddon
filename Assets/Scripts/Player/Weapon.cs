@@ -41,31 +41,18 @@ public class Weapon : MonoBehaviour {
         executed = false;
         bullet= Instantiate(bullet, firePoint.position, firePoint.rotation);
         bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        Debug.Log(shootDirection);
 
-        if(shootDirection.x < 1)
-        {
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * 3), shootDirection.y * (bulletSpeed * 3));
-            Debug.Log("shooting close");
-        }
-        else if (shootDirection.x < 2)
-        {
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed*(3/2)), shootDirection.y * (bulletSpeed*(3/2)));
-            Debug.Log("shooting close");
-        }
-        else
-        {
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed/2, shootDirection.y * bulletSpeed/2);
-            Debug.Log("shooting far");
-        }
+        adjustShotSpeed(shootDirection,bullet);
         
-
+        //Change the rotation of the bullet in relation to angle shot
+        if (shootDirection.x > 0)
+            bullet.transform.rotation = Quaternion.Euler(0, 180, 0);
+        else
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
         //Lose integrity when shooting
         integrity = integrity - damage;
 
-        Debug.Log("Weapon integrity = " + integrity);
 
         //If integrity reaches 0, start sequence to destroy item
         if(integrity <= 0)
@@ -83,5 +70,22 @@ public class Weapon : MonoBehaviour {
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
+    }
+
+
+    public void adjustShotSpeed(Vector3 shootDirection, GameObject bullet)
+    {
+        //Adjusts speed of the bullet in relation to distance clicked from player
+        if (shootDirection.x < -1)
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed / 4, shootDirection.y * bulletSpeed / 4);
+        
+        if (shootDirection.x < 1 && shootDirection.x > -2)
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * 3), shootDirection.y * (bulletSpeed * 3));
+
+        else if (shootDirection.x < 2)
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (bulletSpeed * (3/2)), shootDirection.y * (bulletSpeed * (3 / 2)));
+
+        else
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * bulletSpeed, shootDirection.y * bulletSpeed);
     }
 }

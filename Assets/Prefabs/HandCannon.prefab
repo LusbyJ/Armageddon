@@ -180,7 +180,7 @@ MonoBehaviour:
   bullet: {fileID: 3687545202716563026, guid: 6a19eb06a569e321a90e11abb1f5693b, type: 3}
   holding: 0
   damage: 15
-  bulletSpeed: 10
+  bulletSpeed: 5
   waitTime: 1
   maxIntegrity: 300
   integrity: 300
