@@ -8288,6 +8288,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 515397088}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: lerpSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: maxClamp.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: maxClamp.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: minClamp.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355595987383434043, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
+      propertyPath: minClamp.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6355595987383434181, guid: ffabb2599cf57f4428a44afdcfe077e5, type: 3}
       propertyPath: m_RootOrder
       value: 3
