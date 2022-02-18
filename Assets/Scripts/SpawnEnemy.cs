@@ -6,7 +6,8 @@ public class SpawnEnemy : MonoBehaviour
 {
     public GameObject meleeEnemyPrefab;
     public float respawnTime = 1f;
-    private Vector2 screenBounds;
+    public Vector2 screenBounds;
+    public GameObject character;
 
 
 
@@ -21,6 +22,8 @@ public class SpawnEnemy : MonoBehaviour
     {
         GameObject a = Instantiate(meleeEnemyPrefab) as GameObject;
         a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(-screenBounds.y, screenBounds.y));
+        a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
+        a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
     }
 
     IEnumerator enemyWave()
