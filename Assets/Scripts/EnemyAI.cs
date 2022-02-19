@@ -50,7 +50,6 @@ public class EnemyAI : MonoBehaviour
     void CheckTargetDir()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
         if (timer < waitTime || timer >= waitTime + .05)
         {
             if (target.position.x >= rb.position.x)

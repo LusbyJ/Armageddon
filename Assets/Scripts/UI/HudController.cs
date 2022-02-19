@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class HudController : MonoBehaviour
 {
-    public GameObject character;
-    public GameObject hudArmMain;
-    public GameObject hudArmBack;
-    public GameObject emergencyLight1;
-    public GameObject emergencyLight2;
-    public GameObject hudArmBarMain;
-    public GameObject hudArmBarBack;
-    public GameObject hudArmMainIcon;
-    public GameObject hudArmBackIcon;
+    public GameObject character; //the character in the scene
+    public GameObject hudArmMain; //Right arm object of HUD
+    public GameObject hudArmBack; //Left arm object of HUD
+    public GameObject emergencyLight1; //Right emergency Light
+    public GameObject emergencyLight2; //Left emergency Light
+    public GameObject hudArmBarMain; //Bar of hudArmMain
+    public GameObject hudArmBarBack; //Bar of hudArmBack
+    public GameObject hudArmMainIcon; //Icon of hudArmMain
+    public GameObject hudArmBackIcon; //Icon of hudArmBack
+    public Sprite emergencyLit; //Sprite of lit emergency light
+    public Sprite emergencyBroken; //Sprite of broken emergency light.
     private Weapon arm1;
     private Weapon arm2;
     private Image MainIcon;
@@ -22,6 +24,13 @@ public class HudController : MonoBehaviour
     private targetLerp backPos;
     private Vector2 armActivePos=new Vector2(94,272);
     private Vector2 armInactivePos=new Vector2(85,280);
+    private targetLerp light1Pos;
+    private targetLerp light2Pos;
+    private Vector2 lightActivePos=new Vector2(45,277);
+    private Vector2 lightInactivePos=new Vector2(20,277);
+    private Image emergency1Image;
+    private Image emergency2Image;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +38,35 @@ public class HudController : MonoBehaviour
       BackIcon=hudArmBackIcon.GetComponent<Image>();
       mainPos=hudArmMain.GetComponent<targetLerp>();
       backPos=hudArmBack.GetComponent<targetLerp>();
+      light1Pos=emergencyLight1.GetComponent<targetLerp>();
+      light2Pos=emergencyLight2.GetComponent<targetLerp>();
+      emergency1Image=emergencyLight1.GetComponent<Image>();
+      emergency2Image=emergencyLight2.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if neither arm is active, move lights to their active positions.  Otherwise, move them to inactive positions.
+        if(character.GetComponent<PickUp>().item1 == null&&character.GetComponent<PickUp>().item2 == null){
+          light1Pos.target=new Vector2(lightActivePos.x,lightActivePos.y);
+          light2Pos.target=new Vector2(-lightActivePos.x,lightActivePos.y);
+        }else{
+          light1Pos.target=new Vector2(lightInactivePos.x,lightInactivePos.y);
+          light2Pos.target=new Vector2(-lightInactivePos.x,lightInactivePos.y);
+        }
+        int hullHealth=character.GetComponent<Health>().health;
+        //Light the emergency lights
+        if(hullHealth>2){
+          emergency1Image.sprite=emergencyLit;
+        }else{
+          emergency1Image.sprite=emergencyBroken;
+        }
+        if(hullHealth>1){
+          emergency2Image.sprite=emergencyLit;
+        }else{
+          emergency2Image.sprite=emergencyBroken;
+        }
         //Right Side Arm
         if (character.GetComponent<PickUp>().item1 != null)
         {
@@ -51,6 +84,7 @@ public class HudController : MonoBehaviour
         }
         else
         {
+            //make the arm invisible if nothing is there.
             hudArmMain.SetActive(false);
         }
         //Left Side Arm
@@ -72,6 +106,7 @@ public class HudController : MonoBehaviour
         }
         else
         {
+            //make the arm invisible if nothing is there.
             hudArmBack.SetActive(false);
         }
 
