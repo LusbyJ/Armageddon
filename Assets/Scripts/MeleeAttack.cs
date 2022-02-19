@@ -12,37 +12,69 @@ public class MeleeAttack : MonoBehaviour
     bool executed = true;
 
     public Transform target;
+
+    /* private IEnumerator Attack()
+     {
+         Collider2D attack = Physics2D.OverlapCircle(transform.position + Direction, .3f, playerMask);
+         if (attack.IsTouchingLayers(playerMask))
+         {
+             Health health = attack.GetComponent<Health>();
+             if(health != null)
+             {
+                 health.TakeDamage(damage);
+                 Debug.Log("Player lost " + damage);
+             }
+             if(target.position.x > transform.position.x)
+             {
+                 //Write some code so that the player is knockedback to the right
+             }
+             else if(target.position.x < transform.position.x)
+             {
+                 //Write some code so that the player is knockedback to the left.
+             }
+
+         }
+         yield return new WaitForSeconds(0);
+         executed = true;
+     }*/
+    //If bullet hits object destroy it, if enemy hit cause damage
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Health health = hitInfo.GetComponent<Health>();
+
+        if (health != null)
+        {
+            health.TakeDamage(damage);
+        }
     
-    private IEnumerator Attack()
+    }
+
+   /* void attack()
     {
         Collider2D attack = Physics2D.OverlapCircle(transform.position + Direction, .3f, playerMask);
         if (attack.IsTouchingLayers(playerMask))
         {
             Health health = attack.GetComponent<Health>();
-            if(health != null)
+            if (health != null)
             {
                 health.TakeDamage(damage);
                 Debug.Log("Player lost " + damage);
             }
-            if(target.position.x > transform.position.x)
+            if (target.position.x > transform.position.x)
             {
                 //Write some code so that the player is knockedback to the right
             }
-            else if(target.position.x < transform.position.x)
+            else if (target.position.x < transform.position.x)
             {
                 //Write some code so that the player is knockedback to the left.
             }
-            
         }
-        yield return new WaitForSeconds(0);
-        executed = true;
-    }
-
-
-    // Update is called once per frame
+    }*/
+ /*   // Update is called once per frame
     void Update()
     {
-        if(executed) StartCoroutine("Attack");
-    }
+        Attack();
+        //if(executed) StartCoroutine("Attack");
+    }*/
 
 }
