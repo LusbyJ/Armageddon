@@ -134,5 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad8da46241373f69947224f4ab13d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 2
   rb: {fileID: 3584248264936015592}
+  bulletSpeed: 4
+  shootDirection: {x: 0, y: 0, z: 0}
