@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("CheckTargetDir", 0f, .5f);
-        InvokeRepeating("Jump", 0f, .75f);
+        InvokeRepeating("Jump", 0f, .5f);
         InvokeRepeating("CheckDir", 0f, .5f);
     }
 

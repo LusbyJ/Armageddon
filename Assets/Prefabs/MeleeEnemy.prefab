@@ -184,7 +184,7 @@ MonoBehaviour:
   nextWaypointDistance: 1
   waitTime: 0.1
   timer: 0
-  jumpForce: 750
+  jumpForce: 900
   angle: 0.4
   whatIsGround:
     serializedVersion: 2
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  enemySpawn: {fileID: 0}
 --- !u!1 &7025783236121208394
 GameObject:
   m_ObjectHideFlags: 0
