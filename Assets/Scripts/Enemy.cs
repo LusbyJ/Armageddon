@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour{
 
     public int health = 100;
+    public GameObject enemySpawn;
     
     public void TakeDamage(int damage)
     {
@@ -19,5 +20,6 @@ public class Enemy : MonoBehaviour{
     void Die()
     {
         Destroy(gameObject);
+        enemySpawn.GetComponent<SpawnEnemy>().enemyCount--;
     }
 }

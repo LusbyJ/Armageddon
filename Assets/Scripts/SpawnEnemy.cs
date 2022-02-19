@@ -8,22 +8,26 @@ public class SpawnEnemy : MonoBehaviour
     public float respawnTime = 1f;
     public Vector2 screenBounds;
     public GameObject character;
+    public int enemyCount = 0;
+    public int enemyMax = 5;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screenBounds = new Vector2 (29.8f, 38.6f);
         StartCoroutine(enemyWave());
     }
 
     private void spawnEnemy()
     {
         GameObject a = Instantiate(meleeEnemyPrefab) as GameObject;
-        a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(-screenBounds.y, screenBounds.y));
+        a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
         a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
         a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
+        a.GetComponent<Enemy>().enemySpawn = gameObject;
+        enemyCount++;
     }
 
     IEnumerator enemyWave()
@@ -31,7 +35,8 @@ public class SpawnEnemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(respawnTime);
-            spawnEnemy();
+            if (enemyCount < enemyMax)
+                spawnEnemy();
         }
     }
 
