@@ -46,11 +46,14 @@ public class Bullet : MonoBehaviour
     //If bullet hits object destroy it, if enemy hit cause damage
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Enemy enemy = hitInfo.GetComponent<Enemy>();
-        if(enemy != null)
-        {       
-            enemy.TakeDamage(damage);
+        if(hitInfo.gameObject.tag != "Player")
+        {
+            Enemy enemy = hitInfo.GetComponent<Enemy>();
+            if(enemy != null)
+            {       
+                enemy.TakeDamage(damage);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
