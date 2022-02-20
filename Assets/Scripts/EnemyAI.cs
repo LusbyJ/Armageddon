@@ -97,8 +97,11 @@ public class EnemyAI : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+    }
 
-        if (direction.y > angle && grounded)// Checks to see the path the enemy is trying to follow is point upward and if the enemy is grouded.
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (grounded)
         {
             grounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));
