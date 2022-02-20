@@ -16,11 +16,11 @@ public class Bullet : MonoBehaviour
         
         //Change the rotation of the bullet in relation to angle shot
         if (shootDirection.x < 0)
-            rb.transform.rotation = Quaternion.Euler(0, 180, 0);
+            rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y*-36);
         else
-            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y*-36));
         
-        adjustShotSpeed();
+        //adjustShotSpeed();
     }
 
     public void adjustShotSpeed()

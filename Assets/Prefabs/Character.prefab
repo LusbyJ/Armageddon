@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 4045627737422943446}
   m_Layer: 7
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 5461871509899194067}
+  carpalGrenade: {fileID: 0}
+  cannonGrenade: {fileID: 0}
   arm1: {fileID: 6558204674863389122}
   arm2: {fileID: 4269729739014519280}
   pickUpMask:
