@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         else
             rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y*-36));
         
-        //adjustShotSpeed();
+        adjustShotSpeed();
     }
 
     public void adjustShotSpeed()
