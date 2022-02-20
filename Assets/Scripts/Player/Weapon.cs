@@ -63,7 +63,4 @@ public class Weapon : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
         executed = true;
     }
-
-
-
 }

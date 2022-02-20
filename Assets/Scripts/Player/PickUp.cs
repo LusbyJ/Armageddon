@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public GameObject character;
+    public GameObject carpalGrenade;
+    public GameObject cannonGrenade;
     public Transform arm1;
     public Transform arm2;
     public LayerMask pickUpMask;
@@ -43,9 +45,7 @@ public class PickUp : MonoBehaviour
                 {
                     flip = false;
                 }
-                Debug.Log("what");
-                pickUpItem();
-            
+                pickUpItem();          
             }
         }
 
@@ -161,28 +161,36 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
-        if (item.GetComponent<Rigidbody2D>() != null)
+        if(item.tag == "Carpal")
         {
-            item.GetComponent<Rigidbody2D>().simulated = true;
-            item.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
-            item.GetComponent<Rigidbody2D>().gravityScale = 2;
-            item.GetComponent<BoxCollider2D>().isTrigger = false;
+            if(spot == 1)
+                Instantiate(carpalGrenade, arm1.position, arm1.rotation);
+            else
+                Instantiate(carpalGrenade, arm2.position, arm2.rotation);
         }
 
-        //Destroy arm after 3 seconds
-        Destroy(item, 3);
+        if(item.tag == "Cannon")
+        {
+            Debug.Log("cannon");
+            if (spot == 1)
+                Instantiate(cannonGrenade, arm1.position, arm1.rotation);
+            else
+                Instantiate(cannonGrenade, arm2.position, arm2.rotation);
+        }
+
         item.GetComponent<Weapon>().holding = 0;
         item.transform.parent = null;
+        Destroy(item);
         item = null;
-        if(spot == 1)
+
+        if (spot == 1)
         {
             left = false;
         }
         else
         {
             right = false;
-        }
-       
+        } 
     }
 
     //Swap arms

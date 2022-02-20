@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Got to start");
-        //rb.velocity = transform.right * bulletSpeed;
         shootDirection = Weapon.shootDirection;
         
         //Change the rotation of the bullet in relation to angle shot
@@ -56,4 +54,3 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
