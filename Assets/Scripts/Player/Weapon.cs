@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour {
     public Transform firePoint;
     public GameObject bullet;
     public int holding = 0;
+    public int pickedUp = 0;
     public int damage;   //damage done to integrity when shot
     public float waitTime;
     public int maxIntegrity;
@@ -20,6 +21,8 @@ public class Weapon : MonoBehaviour {
 
     void Update()
     {
+   
+
         //Check if the mouse is clicked and weapon is being held
         //Only shoot if the co_routine has finished executing
         if (Input.GetMouseButton(0) && holding == 1 && executed)

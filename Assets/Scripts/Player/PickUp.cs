@@ -81,6 +81,7 @@ public class PickUp : MonoBehaviour
                 {
                     item1 = pickUpItem.gameObject;
                     item1.GetComponent<Weapon>().holding = 1;
+                    item1.GetComponent<Weapon>().pickedUp = 1;
                     item1.transform.position = arm1.position;
                     item1.transform.parent = transform;
                     if (item1.GetComponent<Rigidbody2D>())
@@ -91,6 +92,7 @@ public class PickUp : MonoBehaviour
                 {
                     item2 = pickUpItem.gameObject;
                     item2.GetComponent<Weapon>().holding = 1;
+                    item1.GetComponent<Weapon>().pickedUp = 1;
                     item2.transform.position = arm1.position;
                     item2.transform.parent = transform;
                     if (item2.GetComponent<Rigidbody2D>())
@@ -109,6 +111,7 @@ public class PickUp : MonoBehaviour
                 if (item2 == null)
                 {
                     item2 = pickUpItem.gameObject;
+                    item2.GetComponent<Weapon>().pickedUp = 1;
                     item2.transform.position = arm2.position;
                     item2.transform.parent = transform;
                     if (item2.GetComponent<Rigidbody2D>())
@@ -118,6 +121,7 @@ public class PickUp : MonoBehaviour
                 else
                 {
                     item1 = pickUpItem.gameObject;
+                    item1.GetComponent<Weapon>().pickedUp = 1;
                     item1.transform.position = arm2.position;
                     item1.transform.parent = transform;
                     if (item1.GetComponent<Rigidbody2D>())

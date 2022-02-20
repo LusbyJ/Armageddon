@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2634290072402541258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.104, y: 0.109, z: 0}
+  m_LocalPosition: {x: 0.029, y: -0.054, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5461871509899194071}
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 5461871509899194067}
-  carpalGrenade: {fileID: 0}
-  cannonGrenade: {fileID: 0}
+  carpalGrenade: {fileID: 6142363382326533937, guid: 394f97c16b4ac3dbea0da42b635913e1, type: 3}
+  cannonGrenade: {fileID: 4752827195520739306, guid: c9c7e3ca71c0667b98efe055927eeebd, type: 3}
   arm1: {fileID: 6558204674863389122}
   arm2: {fileID: 4269729739014519280}
   pickUpMask:
@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8850219945907264476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.066, y: 0, z: 1}
+  m_LocalPosition: {x: 0.029, y: -0.104, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5461871509899194071}
