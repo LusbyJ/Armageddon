@@ -179,6 +179,7 @@ MonoBehaviour:
   firePoint: {fileID: 7764446224263117211}
   bullet: {fileID: 5674178122323808298, guid: 8612f3f6ce1c36ea99c6b3403ef4eb4d, type: 3}
   holding: 0
+  pickedUp: 0
   damage: 2
   waitTime: 0.2
   maxIntegrity: 200
