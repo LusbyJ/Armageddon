@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class DigitalClock : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class DigitalClock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textClock = GetComponent<textClock>();
+        textClock = GetComponent<Text>();
     }
 
     // Update is called once per frame
