@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine("Blink");
         if(PickUp.left)
         {
             Weapon item = GetComponent<PickUp>().item1.GetComponent<Weapon>();
@@ -49,6 +50,17 @@ public class Health : MonoBehaviour
             }
         }
     }
+    
+    private IEnumerator Blink()
+    {
+       
+            GetComponent<Renderer>().material.color = Color.clear;
+            yield return new WaitForSeconds(0.1f);
+            GetComponent<Renderer>().material.color = Color.white;
+            StopCoroutine("Blink");
+        
+    }
+
 
     void Die()
     {
