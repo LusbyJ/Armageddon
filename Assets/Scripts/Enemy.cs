@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour{
     
     public void TakeDamage(int damage)
     {
+
+        StartCoroutine("Blink");
         health -= damage;
         Debug.Log("Enemy health is " +  health);
         if(health <= 0)
@@ -16,6 +18,17 @@ public class Enemy : MonoBehaviour{
             Die();
         }
     }
+
+    private IEnumerator Blink()
+    {
+       
+            GetComponent<Renderer>().material.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            GetComponent<Renderer>().material.color = Color.white;
+            StopCoroutine("Blink");
+        
+    }
+
 
     void Die()
     {
