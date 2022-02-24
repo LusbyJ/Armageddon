@@ -8,7 +8,7 @@ public class DigitalClock : MonoBehaviour
 {
     bool gameover = false;
     private Text textClock;
-    float currentTime;
+    public float currentTime;
     public GameObject player;
     // Start is called before the first frame update
     void Start()

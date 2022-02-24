@@ -173,17 +173,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5254351367033710154}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bf78fb651e56f24db51ae2018287f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   distFromTarget: {x: 0, y: 0, z: 0}
+  attack: 0
   speed: 400
   nextWaypointDistance: 1
+  stopwatch: {fileID: 0}
   waitTime: 0.1
-  timer: 0
+  currentTime: 0
   jumpForce: 900
   angle: 0.4
   whatIsGround:
@@ -310,4 +312,5 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  attack: 0
   target: {fileID: 5461871509899194071, guid: f39f0036b06076de89a36f090ddaa33c, type: 3}

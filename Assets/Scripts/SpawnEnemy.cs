@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour   
 {
     public GameObject meleeEnemyPrefab;
+    public GameObject stopwatch;
     public float respawnTime = 1f;
     public Vector2 screenBounds;
     public GameObject character;
@@ -28,6 +29,7 @@ public class SpawnEnemy : MonoBehaviour
         a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
         a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
         a.GetComponent<Enemy>().enemySpawn = gameObject;
+        a.GetComponent<EnemyAI>().stopwatch = stopwatch;
         enemyCount++;
     }
 

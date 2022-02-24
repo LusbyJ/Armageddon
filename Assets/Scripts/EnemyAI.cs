@@ -8,11 +8,15 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target;
     public Vector3 distFromTarget;
+    public bool attack;
+    public bool meleeEnemy;
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
-    public float waitTime = .1f;
-    public float timer = 0.0f;
+
+    public GameObject stopwatch;
+    public float waitTime = 3f;
+    public float currentTime;
 
     Path path;
     int currentWaypoint = 0;
@@ -37,6 +41,12 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        attack = false;
+
+        if (GetComponentInChildren<MeleeAttack>())
+            meleeEnemy = true;
+        else
+            meleeEnemy = false;
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("CheckTargetDir", 0f, .5f);
@@ -49,20 +59,29 @@ public class EnemyAI : MonoBehaviour
     // so that the enemy can stop before just ramming into the player
     void CheckTargetDir()
     {
-        timer += Time.deltaTime;
-        if (timer < waitTime || timer >= waitTime + .05)
+        if (meleeEnemy)
         {
+            attack = GetComponentInChildren<MeleeAttack>().attack;
+        }
+       // else
+            //Range Attack Boolean
+
+        if (attack)
+        {
+            Debug.Log("Attacked. Now Backing Off.");
+            currentTime = stopwatch.GetComponent<DigitalClock>().currentTime;
             if (target.position.x >= rb.position.x)
                 distFromTarget = Vector3.right * 2;
             else if (target.position.x < rb.position.x)
                 distFromTarget = Vector3.left * 2;
-            if (timer >= waitTime + .05)
-            {
-                timer = 0;
-            }
+            if (meleeEnemy)
+                GetComponentInChildren<MeleeAttack>().attack = false;
+            //else
+                //same for range attack
         }
-        else if (timer >= waitTime)
+        else if (stopwatch.GetComponent<DigitalClock>().currentTime >= currentTime + waitTime)
         {
+            Debug.Log("Attacking Again");
             distFromTarget = Vector3.zero;
         }
     }
@@ -101,7 +120,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (grounded)
+        if (grounded && other.gameObject.tag != "Player")
         {
             grounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));

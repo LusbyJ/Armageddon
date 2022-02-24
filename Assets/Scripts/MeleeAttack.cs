@@ -9,6 +9,8 @@ public class MeleeAttack : MonoBehaviour
     public LayerMask playerMask;
     public Vector3 Direction { get; set; }
 
+    public bool attack = true;
+
     bool executed = true;
 
     public Transform target;
@@ -40,13 +42,14 @@ public class MeleeAttack : MonoBehaviour
     //If bullet hits object destroy it, if enemy hit cause damage
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        attack = true;
         Health health = hitInfo.GetComponent<Health>();
 
         if (health != null)
         {
             health.TakeDamage(damage);
         }
-    
+               
     }
 
    /* void attack()

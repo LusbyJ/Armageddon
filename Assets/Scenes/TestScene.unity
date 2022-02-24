@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5461871509899194069, guid: f39f0036b06076de89a36f090ddaa33c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5461871509899194071, guid: f39f0036b06076de89a36f090ddaa33c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5823,6 +5827,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4404622913820008352, guid: 036ae41f50d034a4fb64b2ead9eb0fba, type: 3}
   m_PrefabInstance: {fileID: 717570148}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1626946101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3477501401564254226, guid: 036ae41f50d034a4fb64b2ead9eb0fba, type: 3}
+  m_PrefabInstance: {fileID: 717570148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1634135652
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,6 +8351,10 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 5692770}
+    - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
+      propertyPath: stopwatch
+      value: 
+      objectReference: {fileID: 1626946101}
     - target: {fileID: 1408623290379991754, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
