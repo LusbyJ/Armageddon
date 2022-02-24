@@ -32,11 +32,8 @@ public class Weapon : MonoBehaviour {
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
             shootDirection = shootDirection - transform.position;
 
-            if (shootDirection.x > 0.5 || shootDirection.x < -0.5)
-            {
             StartCoroutine("Shoot");
-            //GetComponent<Weapon>().shootDirection = shootDirection;
-            }
+          
         }
     }
 
