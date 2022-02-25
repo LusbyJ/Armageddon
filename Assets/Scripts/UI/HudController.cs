@@ -22,12 +22,12 @@ public class HudController : MonoBehaviour
     private Image BackIcon;
     private targetLerp mainPos;
     private targetLerp backPos;
-    private Vector2 armActivePos=new Vector2(94,272);
-    private Vector2 armInactivePos=new Vector2(85,280);
+    private Vector2 armActivePos=new Vector2(192,256);
+    private Vector2 armInactivePos=new Vector2(170,277);
     private targetLerp light1Pos;
     private targetLerp light2Pos;
-    private Vector2 lightActivePos=new Vector2(45,277);
-    private Vector2 lightInactivePos=new Vector2(20,277);
+    private Vector2 lightActivePos=new Vector2(89,265);
+    private Vector2 lightInactivePos=new Vector2(40,265);
     private Image emergency1Image;
     private Image emergency2Image;
 
