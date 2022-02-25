@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
                 Debug.Log("attacking with melee");
             }
 
-            if (gameObject.tag != "Melee") 
+            if (gameObject.tag != "Melee" && gameObject.tag != "Key") 
             {
                 StartCoroutine("Shoot");
                 Debug.Log("attacking with gun");

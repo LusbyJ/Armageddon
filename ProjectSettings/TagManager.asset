@@ -9,6 +9,7 @@ TagManager:
   - Cannon
   - Carpal
   - Melee
+  - Key
   layers:
   - Default
   - TransparentFX
