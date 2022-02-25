@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 5461871509899194071}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5415286896951502970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2394047583672407420}
+  m_Layer: 0
+  m_Name: Melee
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2394047583672407420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415286896951502970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.296, y: -0.054, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5461871509899194071}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5461871509079025291
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +129,7 @@ Transform:
   - {fileID: 5461871509079025292}
   - {fileID: 6558204674863389122}
   - {fileID: 4269729739014519280}
+  - {fileID: 2394047583672407420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,6 +305,7 @@ MonoBehaviour:
   cannonGrenade: {fileID: 4752827195520739306, guid: c9c7e3ca71c0667b98efe055927eeebd, type: 3}
   arm1: {fileID: 6558204674863389122}
   arm2: {fileID: 4269729739014519280}
+  melee: {fileID: 0}
   pickUpMask:
     serializedVersion: 2
     m_Bits: 8

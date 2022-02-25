@@ -9,13 +9,14 @@ public class PickUp : MonoBehaviour
     public GameObject cannonGrenade;
     public Transform arm1;
     public Transform arm2;
+    public Transform melee;
     public LayerMask pickUpMask;
     public Vector3 Direction { get; set; }
     private float speed = 20f;
 
 
 
-   // public ProjectileBehaviour LaunchProjectilePrefab;
+    // public ProjectileBehaviour LaunchProjectilePrefab;
     //public Transform LaunchOffset;
 
 
@@ -39,13 +40,13 @@ public class PickUp : MonoBehaviour
                 if (character.GetComponent<PlayerController>().m_FacingRight == false)
                 {
                     flip = true;
-                    
+
                 }
                 else
                 {
                     flip = false;
                 }
-                pickUpItem();          
+                pickUpItem();
             }
         }
 
@@ -65,13 +66,19 @@ public class PickUp : MonoBehaviour
     void pickUpItem()
     {
         Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, .3f, pickUpMask);
-        
+
         //If player is facing left rotate arm 180 before picking up
-        if (flip)
+        if (flip && pickUpItem.gameObject.tag == "Melee")
+        {
+            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        //If player is facing left rotate arm 180 before picking up
+        if (flip && pickUpItem.gameObject.tag != "Melee")
         {
             pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        
+
         //If no arm on left pick up left arm
         if (!left)
         {
@@ -99,8 +106,6 @@ public class PickUp : MonoBehaviour
                         item2.GetComponent<Rigidbody2D>().simulated = false;
                     left = true;
                 }
-
-               
             }
         }
         //If no arm on right pick up right arm
@@ -151,7 +156,7 @@ public class PickUp : MonoBehaviour
 
         else if (!left && right)
         {
-            if(item1 != null && item1.transform.position == arm2.position)
+            if (item1 != null && item1.transform.position == arm2.position)
             {
                 throwArm(item1, 2);
             }
@@ -165,15 +170,15 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
-        if(item.tag == "Carpal")
+        if (item.tag == "Carpal")
         {
-            if(spot == 1)
+            if (spot == 1)
                 Instantiate(carpalGrenade, arm1.position, arm1.rotation);
             else
                 Instantiate(carpalGrenade, arm2.position, arm2.rotation);
         }
 
-        if(item.tag == "Cannon")
+        if (item.tag == "Cannon")
         {
             Debug.Log("cannon");
             if (spot == 1)
@@ -194,12 +199,12 @@ public class PickUp : MonoBehaviour
         else
         {
             right = false;
-        } 
+        }
     }
 
     //Swap arms
     void swapArms()
-        
+
     {
         //If only one arm being held
         if ((item1 == null) && (item2 != null))
@@ -236,9 +241,9 @@ public class PickUp : MonoBehaviour
                 right = false;
             }
         }
-        else 
+        else
         {
-            if(item1.transform.position == arm1.position)
+            if (item1.transform.position == arm1.position)
             {
                 item1.transform.position = arm2.position;
                 item1.GetComponent<Weapon>().holding = 0;
