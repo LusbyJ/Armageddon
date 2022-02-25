@@ -68,9 +68,9 @@ public class PickUp : MonoBehaviour
         Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, .3f, pickUpMask);
 
         //If player is facing left rotate arm 180 before picking up
-        if (flip && pickUpItem.gameObject.tag == "Melee")
+        if (!flip && pickUpItem.gameObject.tag == "Melee")
         {
-            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
         //If player is facing left rotate arm 180 before picking up

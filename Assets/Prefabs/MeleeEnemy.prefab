@@ -181,6 +181,7 @@ MonoBehaviour:
   target: {fileID: 0}
   distFromTarget: {x: 0, y: 0, z: 0}
   attack: 0
+  meleeEnemy: 0
   speed: 400
   nextWaypointDistance: 1
   stopwatch: {fileID: 0}
