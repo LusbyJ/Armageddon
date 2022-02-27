@@ -18,21 +18,11 @@ public class Bullet : MonoBehaviour
             shootDirection = Weapon.shootDirection;
 
         //Change the rotation of the bullet in relation to angle shot
-        if (!enemyFire)
-        {
-            if (shootDirection.x < 0)
-                rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
-            else
-                rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y * -36));
-        }
+        if (shootDirection.x < 0)
+            rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
         else
-        {
-            if (shootDirection.x < 0)
-                rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
-            else
-                rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y * -36));
-
-        }
+            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y * -36));
+        
 
         rb.velocity = (new Vector2(shootDirection.x, shootDirection.y).normalized) * bulletSpeed;
       
@@ -50,12 +40,15 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        else if(hitInfo.gameObject.tag == "Player" && enemyFire)
+        else if(enemyFire)
         {
-            Health health = hitInfo.GetComponent<Health>();
-            if (health != null)
+            if (hitInfo.gameObject.tag == "Player")
             {
-                health.TakeDamage(damage);
+                Health health = hitInfo.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
             }
             Destroy(gameObject);
             enemy.GetComponent<RangeAttack>().numBullets--;

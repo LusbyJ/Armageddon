@@ -20,7 +20,7 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         //Bounds hard coded. Need to adjust depending on the map or keep each map roughly the same size
-        screenBounds = new Vector2 (29.8f, 38.6f);
+        screenBounds = new Vector2 (29.8f, 12.37f);
         StartCoroutine(enemyWave());
     }
 
@@ -65,6 +65,7 @@ public class SpawnEnemy : MonoBehaviour
             if (enemyCount < enemyMax)
             {
                 int enemy = Random.Range(1, 4);
+                enemy = 4;
                 if (enemy == 1)
                     spawnMeleeEnemy();
                 else if (enemy == 2)
