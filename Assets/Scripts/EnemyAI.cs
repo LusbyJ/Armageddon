@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private float jumpForce = 700f;
 
-    Vector2 direction;
+    public Vector2 direction;
     public float angle = .4f;
     [SerializeField] private LayerMask whatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform groundCheck;                           // A position marking where to check if the player is grounded.
@@ -60,13 +60,11 @@ public class EnemyAI : MonoBehaviour
     void CheckTargetDir()
     {
         if (meleeEnemy)
-        {
             attack = GetComponentInChildren<MeleeAttack>().attack;
-        }
-       // else
-            //Range Attack Boolean
+        else
+            attack = GetComponent<RangeAttack>().attack;
 
-        if (attack)
+        if (attack || !meleeEnemy)
         {
             Debug.Log("Attacked. Now Backing Off.");
             currentTime = stopwatch.GetComponent<DigitalClock>().currentTime;
@@ -76,8 +74,8 @@ public class EnemyAI : MonoBehaviour
                 distFromTarget = Vector3.left * 2;
             if (meleeEnemy)
                 GetComponentInChildren<MeleeAttack>().attack = false;
-            //else
-                //same for range attack
+            else
+                GetComponent<RangeAttack>().attack = false;
         }
         else if (stopwatch.GetComponent<DigitalClock>().currentTime >= currentTime + waitTime)
         {

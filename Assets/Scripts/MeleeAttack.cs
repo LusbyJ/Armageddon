@@ -6,14 +6,8 @@ public class MeleeAttack : MonoBehaviour
 { 
 
     public int damage = 1;
-    public LayerMask playerMask;
-    public Vector3 Direction { get; set; }
 
     public bool attack = true;
-
-    bool executed = true;
-
-    public Transform target;
 
     /* private IEnumerator Attack()
      {

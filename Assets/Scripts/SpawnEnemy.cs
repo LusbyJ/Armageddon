@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour   
 {
     public GameObject meleeEnemyPrefab;
+    public GameObject groundRangeEnemyPrefab;
+    public GameObject flyingRangeEnemyPrefab;
     public GameObject stopwatch;
     public float respawnTime = 1f;
     public Vector2 screenBounds;
@@ -22,14 +24,36 @@ public class SpawnEnemy : MonoBehaviour
         StartCoroutine(enemyWave());
     }
 
-    private void spawnEnemy()
+    private void spawnMeleeEnemy()
     {
         GameObject a = Instantiate(meleeEnemyPrefab) as GameObject;
         a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
         a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
-        a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
+   //     a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
         a.GetComponent<Enemy>().enemySpawn = gameObject;
         a.GetComponent<EnemyAI>().stopwatch = stopwatch;
+        enemyCount++;
+    }
+
+    private void spawnRangeGroundEnemy()
+    {
+        GameObject b = Instantiate(groundRangeEnemyPrefab) as GameObject;
+        b.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
+        b.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
+        b.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
+        b.GetComponent<Enemy>().enemySpawn = gameObject;
+        b.GetComponent<EnemyAI>().stopwatch = stopwatch;
+        enemyCount++;
+    }
+
+    private void spawnRangeFlyingEnemy()
+    {
+        GameObject c = Instantiate(flyingRangeEnemyPrefab) as GameObject;
+        c.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
+        c.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
+        c.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
+        c.GetComponent<Enemy>().enemySpawn = gameObject;
+        c.GetComponent<EnemyAI>().stopwatch = stopwatch;
         enemyCount++;
     }
 
@@ -39,7 +63,16 @@ public class SpawnEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
             if (enemyCount < enemyMax)
-                spawnEnemy();
+            {
+                int enemy = Random.Range(1, 4);
+                if (enemy == 1)
+                    spawnMeleeEnemy();
+                else if (enemy == 2)
+                    spawnRangeGroundEnemy();
+                else
+                    spawnRangeFlyingEnemy();
+                    
+            }
         }
     }
 
