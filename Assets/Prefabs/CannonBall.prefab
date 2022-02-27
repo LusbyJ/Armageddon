@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4828474405329062940}
   - component: {fileID: 8020286998602964869}
   - component: {fileID: 4300953861822113967}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CannonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,3 +138,5 @@ MonoBehaviour:
   rb: {fileID: 4828474405329062940}
   bulletSpeed: 7
   shootDirection: {x: 0, y: 0, z: 0}
+  enemyFire: 0
+  enemy: {fileID: 0}

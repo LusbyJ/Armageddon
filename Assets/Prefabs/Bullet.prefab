@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3584248264936015592}
   - component: {fileID: 1762997382470886448}
   - component: {fileID: 3842379695666986798}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,3 +138,5 @@ MonoBehaviour:
   rb: {fileID: 3584248264936015592}
   bulletSpeed: 15
   shootDirection: {x: 0, y: 0, z: 0}
+  enemyFire: 0
+  enemy: {fileID: 0}
