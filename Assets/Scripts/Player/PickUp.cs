@@ -36,7 +36,7 @@ public class PickUp : MonoBehaviour
     void Update()
     {
         //Call Pick up item on user input
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Pickup") || Input.GetKeyDown(KeyCode.F))
         {
             if (!left || !right)
             {
@@ -213,7 +213,7 @@ public class PickUp : MonoBehaviour
         }
 
         if (item.tag == "Cannon")
-        { 
+        {
             if (spot == 1)
                 Instantiate(cannonGrenade, arm1.position, arm1.rotation);
             else
@@ -225,7 +225,7 @@ public class PickUp : MonoBehaviour
 
         Destroy(item);
         item = null;
-        
+
 
         if (spot == 1)
         {
