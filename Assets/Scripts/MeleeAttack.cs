@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeAttack : MonoBehaviour
 { 
 
-    public int damage = 1;
+    public int damage = 5;
 
     public bool attack = true;
 

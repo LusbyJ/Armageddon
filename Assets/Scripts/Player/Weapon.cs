@@ -39,11 +39,13 @@ public class Weapon : MonoBehaviour
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
+                
             }
 
             if (gameObject.tag != "Melee" && gameObject.tag != "Key") 
             {
                 StartCoroutine("Shoot");
+               
             }
         }
 
@@ -61,11 +63,13 @@ public class Weapon : MonoBehaviour
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
+               
             }
 
             if (gameObject.tag != "Melee" && gameObject.tag != "Key")
             {
                 StartCoroutine("Shoot");
+                
             }
         }
     }

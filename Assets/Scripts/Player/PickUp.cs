@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     public GameObject character;
     public GameObject carpalGrenade;
     public GameObject cannonGrenade;
+    public GameObject swordGrenade;
     public Transform arm1;
     public Transform arm2;
     public Transform melee;
@@ -67,73 +68,77 @@ public class PickUp : MonoBehaviour
     {
         Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, .3f, pickUpMask);
 
-        //If player is facing left rotate arm 180 before picking up
-        if (!flip && pickUpItem.gameObject.tag == "Melee")
+        if (pickUpItem != null)
         {
-            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
 
-        //If player is facing left rotate arm 180 before picking up
-        if (flip && pickUpItem.gameObject.tag != "Melee")
-        {
-            pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-
-        //If no arm on left pick up left arm
-        if (!left)
-        {
-            if (pickUpItem.gameObject.transform.position != arm2.position)
+            //If player is facing left rotate arm 180 before picking up
+            if (!flip && pickUpItem.gameObject.tag == "Melee")
             {
-                if (item1 == null)
+                pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            //If player is facing left rotate arm 180 before picking up
+            if (flip && pickUpItem.gameObject.tag != "Melee")
+            {
+                pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            //If no arm on left pick up left arm
+            if (!left)
+            {
+                if (pickUpItem.gameObject.transform.position != arm2.position)
                 {
-                    item1 = pickUpItem.gameObject;
-                    item1.GetComponent<Weapon>().holding = 1;
-                    item1.GetComponent<Weapon>().pickedUp = 1;
-                    item1.transform.position = arm1.position;
-                    item1.transform.parent = transform;
-                    if (item1.GetComponent<Rigidbody2D>())
-                        item1.GetComponent<Rigidbody2D>().simulated = false;
-                    left = true;
-                }
-                else
-                {
-                    item2 = pickUpItem.gameObject;
-                    item2.GetComponent<Weapon>().holding = 1;
-                    item1.GetComponent<Weapon>().pickedUp = 1;
-                    item2.transform.position = arm1.position;
-                    item2.transform.parent = transform;
-                    if (item2.GetComponent<Rigidbody2D>())
-                        item2.GetComponent<Rigidbody2D>().simulated = false;
-                    left = true;
+                    if (item1 == null)
+                    {
+                        item1 = pickUpItem.gameObject;
+                        item1.GetComponent<Weapon>().holding = 1;
+                        item1.GetComponent<Weapon>().pickedUp = 1;
+                        item1.transform.position = arm1.position;
+                        item1.transform.parent = transform;
+                        if (item1.GetComponent<Rigidbody2D>())
+                            item1.GetComponent<Rigidbody2D>().simulated = false;
+                        left = true;
+                    }
+                    else
+                    {
+                        item2 = pickUpItem.gameObject;
+                        item2.GetComponent<Weapon>().holding = 1;
+                        item1.GetComponent<Weapon>().pickedUp = 1;
+                        item2.transform.position = arm1.position;
+                        item2.transform.parent = transform;
+                        if (item2.GetComponent<Rigidbody2D>())
+                            item2.GetComponent<Rigidbody2D>().simulated = false;
+                        left = true;
+                    }
                 }
             }
-        }
-        //If no arm on right pick up right arm
-        else if (!right)
-        {
-            if (pickUpItem.gameObject.transform.position != arm1.position)
+            //If no arm on right pick up right arm
+            else if (!right)
             {
-                if (item2 == null)
+                if (pickUpItem.gameObject.transform.position != arm1.position)
                 {
-                    item2 = pickUpItem.gameObject;
-                    item2.GetComponent<Weapon>().holding = 2;
-                    item2.GetComponent<Weapon>().pickedUp = 1;
-                    item2.transform.position = arm2.position;
-                    item2.transform.parent = transform;
-                    if (item2.GetComponent<Rigidbody2D>())
-                        item2.GetComponent<Rigidbody2D>().simulated = false;
-                    right = true;
-                }
-                else
-                {
-                    item1 = pickUpItem.gameObject;
-                    item1.GetComponent<Weapon>().holding = 2;
-                    item1.GetComponent<Weapon>().pickedUp = 1;
-                    item1.transform.position = arm2.position;
-                    item1.transform.parent = transform;
-                    if (item1.GetComponent<Rigidbody2D>())
-                        item1.GetComponent<Rigidbody2D>().simulated = false;
-                    right = true;
+                    if (item2 == null)
+                    {
+                        item2 = pickUpItem.gameObject;
+                        item2.GetComponent<Weapon>().holding = 2;
+                        item2.GetComponent<Weapon>().pickedUp = 1;
+                        item2.transform.position = arm2.position;
+                        item2.transform.parent = transform;
+                        if (item2.GetComponent<Rigidbody2D>())
+                            item2.GetComponent<Rigidbody2D>().simulated = false;
+                        right = true;
+                    }
+                    else
+                    {
+                        item1 = pickUpItem.gameObject;
+                        item1.GetComponent<Weapon>().holding = 2;
+                        item1.GetComponent<Weapon>().pickedUp = 1;
+                        item1.transform.position = arm2.position;
+                        item1.transform.parent = transform;
+                        if (item1.GetComponent<Rigidbody2D>())
+                            item1.GetComponent<Rigidbody2D>().simulated = false;
+                        right = true;
+                    }
                 }
             }
         }
@@ -172,6 +177,14 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
+        if (item.tag == "Melee")
+        {
+            if (spot == 1)
+                Instantiate(swordGrenade, arm1.position, arm1.rotation);
+            else
+                Instantiate(swordGrenade, arm2.position, arm2.rotation);
+        }
+
         if (item.tag == "Carpal")
         {
             if (spot == 1)
@@ -181,8 +194,7 @@ public class PickUp : MonoBehaviour
         }
 
         if (item.tag == "Cannon")
-        {
-            Debug.Log("cannon");
+        { 
             if (spot == 1)
                 Instantiate(cannonGrenade, arm1.position, arm1.rotation);
             else
