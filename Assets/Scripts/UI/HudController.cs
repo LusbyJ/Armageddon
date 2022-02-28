@@ -34,6 +34,7 @@ public class HudController : MonoBehaviour
     private Image emergency2Image;
     private Vector2 pinActivePos=new Vector2(0,223);
     private Vector2 pinInactivePos=new Vector2(0,350);
+    public GameObject pinBar;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,8 @@ public class HudController : MonoBehaviour
           pinPos.target=new Vector2(pinActivePos.x,pinActivePos.y);
           hudArmMain.SetActive(false);
           hudArmBack.SetActive(false);
+          float perc=0.5f;
+          pinBar.transform.localScale = new Vector3(perc, 1, 1);
         }else{
           pinPos.target=new Vector2(pinInactivePos.x,pinInactivePos.y);
           //Right Side Arm
