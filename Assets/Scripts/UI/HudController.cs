@@ -16,6 +16,7 @@ public class HudController : MonoBehaviour
     public GameObject hudArmBackIcon; //Icon of hudArmBack
     public Sprite emergencyLit; //Sprite of lit emergency light
     public Sprite emergencyBroken; //Sprite of broken emergency light.
+    public GameObject pin;
     private Weapon arm1;
     private Weapon arm2;
     private Image MainIcon;
@@ -26,10 +27,13 @@ public class HudController : MonoBehaviour
     private Vector2 armInactivePos=new Vector2(170,277);
     private targetLerp light1Pos;
     private targetLerp light2Pos;
+    private targetLerp pinPos;
     private Vector2 lightActivePos=new Vector2(89,265);
     private Vector2 lightInactivePos=new Vector2(40,265);
     private Image emergency1Image;
     private Image emergency2Image;
+    private Vector2 pinActivePos=new Vector2(0,223);
+    private Vector2 pinInactivePos=new Vector2(0,350);
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,7 @@ public class HudController : MonoBehaviour
       light2Pos=emergencyLight2.GetComponent<targetLerp>();
       emergency1Image=emergencyLight1.GetComponent<Image>();
       emergency2Image=emergencyLight2.GetComponent<Image>();
+      pinPos=pin.GetComponent<targetLerp>();
     }
 
     // Update is called once per frame
@@ -67,47 +72,55 @@ public class HudController : MonoBehaviour
         }else{
           emergency2Image.sprite=emergencyBroken;
         }
-        //Right Side Arm
-        if (character.GetComponent<PickUp>().item1 != null)
-        {
-            hudArmMain.SetActive(true);
-            arm1 = character.GetComponent<PickUp>().item1.GetComponent<Weapon>();
-            float perc = Mathf.Clamp((float)arm1.integrity / (float)arm1.maxIntegrity, 0, 1);
-            hudArmBarMain.transform.localScale = new Vector3(perc, 1, 1);
-            MainIcon.sprite=arm1.weaponIcon;
-            //Move the UI arm if it's active
-            if(arm1.holding==1){
-              mainPos.target=new Vector2(armActivePos.x,armActivePos.y);
-            }else{
-              mainPos.target=new Vector2(armInactivePos.x,armInactivePos.y);
-            }
-        }
-        else
-        {
-            //make the arm invisible if nothing is there.
-            hudArmMain.SetActive(false);
-        }
-        //Left Side Arm
-        if (character.GetComponent<PickUp>().item2 != null)
-        {
-            hudArmBack.SetActive(true);
-            arm2 = character.GetComponent<PickUp>().item2.GetComponent<Weapon>();
-            //scale healthbar
-            float perc = Mathf.Clamp((float)arm2.integrity / (float)arm2.maxIntegrity, 0, 1);
-            hudArmBarBack.transform.localScale = new Vector3(perc, 1, 1);
-            //change icon sprite
-            BackIcon.sprite=arm2.weaponIcon;
-            //Move the UI arm if it's active
-            if(arm2.holding==1){
-              backPos.target=new Vector2(-armActivePos.x,armActivePos.y);
-            }else{
-              backPos.target=new Vector2(-armInactivePos.x,armInactivePos.y);
-            }
-        }
-        else
-        {
-            //make the arm invisible if nothing is there.
-            hudArmBack.SetActive(false);
+        //pin key active
+        if(false){
+          pinPos.target=new Vector2(pinActivePos.x,pinActivePos.y);
+          hudArmMain.SetActive(false);
+          hudArmBack.SetActive(false);
+        }else{
+          pinPos.target=new Vector2(pinInactivePos.x,pinInactivePos.y);
+          //Right Side Arm
+          if (character.GetComponent<PickUp>().item1 != null)
+          {
+              hudArmMain.SetActive(true);
+              arm1 = character.GetComponent<PickUp>().item1.GetComponent<Weapon>();
+              float perc = Mathf.Clamp((float)arm1.integrity / (float)arm1.maxIntegrity, 0, 1);
+              hudArmBarMain.transform.localScale = new Vector3(perc, 1, 1);
+              MainIcon.sprite=arm1.weaponIcon;
+              //Move the UI arm if it's active
+              if(arm1.holding==1){
+                mainPos.target=new Vector2(armActivePos.x,armActivePos.y);
+              }else{
+                mainPos.target=new Vector2(armInactivePos.x,armInactivePos.y);
+              }
+          }
+          else
+          {
+              //make the arm invisible if nothing is there.
+              hudArmMain.SetActive(false);
+          }
+          //Left Side Arm
+          if (character.GetComponent<PickUp>().item2 != null)
+          {
+              hudArmBack.SetActive(true);
+              arm2 = character.GetComponent<PickUp>().item2.GetComponent<Weapon>();
+              //scale healthbar
+              float perc = Mathf.Clamp((float)arm2.integrity / (float)arm2.maxIntegrity, 0, 1);
+              hudArmBarBack.transform.localScale = new Vector3(perc, 1, 1);
+              //change icon sprite
+              BackIcon.sprite=arm2.weaponIcon;
+              //Move the UI arm if it's active
+              if(arm2.holding==1){
+                backPos.target=new Vector2(-armActivePos.x,armActivePos.y);
+              }else{
+                backPos.target=new Vector2(-armInactivePos.x,armInactivePos.y);
+              }
+          }
+          else
+          {
+              //make the arm invisible if nothing is there.
+              hudArmBack.SetActive(false);
+          }
         }
 
     }
