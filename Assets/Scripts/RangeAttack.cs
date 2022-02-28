@@ -25,7 +25,7 @@ public class RangeAttack : MonoBehaviour
     {
         shootDirection = target.position;
         shootDirection.z = 0.0f;
-        shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+//        shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
         shootDirection = shootDirection - gameObject.transform.position;
         Vector3 distance = target.position - gameObject.transform.position;
         if ((distance.x < attackRange.x && distance.x > -attackRange.x) && 

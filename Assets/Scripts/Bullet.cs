@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
         if(!enemyFire)
             shootDirection = Weapon.shootDirection;
 
+        Debug.Log("Shoot Direction is " + shootDirection);
         //Change the rotation of the bullet in relation to angle shot
         if (shootDirection.x < 0)
             rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
