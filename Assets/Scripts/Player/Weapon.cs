@@ -39,13 +39,37 @@ public class Weapon : MonoBehaviour
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
-                Debug.Log("attacking with melee");
+                
             }
 
             if (gameObject.tag != "Melee" && gameObject.tag != "Key") 
             {
                 StartCoroutine("Shoot");
-                Debug.Log("attacking with gun");
+               
+            }
+        }
+
+        //Check if the mouse is clicked and weapon is being held
+        //Only shoot if the co_routine has finished executing
+        if (Input.GetMouseButton(1) && holding == 2 && executed)
+        {
+            shootDirection = Input.mousePosition;
+            shootDirection.z = 0.0f;
+            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+            shootDirection = shootDirection - transform.position;
+
+
+            if (gameObject.tag == "Melee" && !attacking)
+            {
+                StartCoroutine("Stab");
+                StartCoroutine("Attack");
+               
+            }
+
+            if (gameObject.tag != "Melee" && gameObject.tag != "Key")
+            {
+                StartCoroutine("Shoot");
+                
             }
         }
     }
@@ -91,11 +115,22 @@ public class Weapon : MonoBehaviour
         {
             Destroy(gameObject);
 
-            PickUp.left = false;
-            GetComponent<PickUp>().item1 = null;
+            if (holding == 1)
+            {
+                PickUp.left = false;
+                GetComponent<PickUp>().item1 = null;
 
-            holding = 0;
-            GetComponent<PickUp>().item1.transform.parent = null;
+                holding = 0;
+                GetComponent<PickUp>().item1.transform.parent = null;
+            }
+            if(holding == 2)
+            {
+                PickUp.right = false;
+                GetComponent<PickUp>().item2 = null;
+
+                holding = 0;
+                GetComponent<PickUp>().item2.transform.parent = null;
+            }
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
