@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     public GameObject carpalGrenade;
     public GameObject cannonGrenade;
     public GameObject swordGrenade;
+    public GameObject hammerGrenade;
     public Transform arm1;
     public Transform arm2;
     public Transform melee;
@@ -177,12 +178,20 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
-        if (item.tag == "Melee")
+        if (item.name == "Sword")
         {
             if (spot == 1)
                 Instantiate(swordGrenade, arm1.position, arm1.rotation);
             else
                 Instantiate(swordGrenade, arm2.position, arm2.rotation);
+        }
+
+        if (item.name == "Hammer")
+        {
+            if (spot == 1)
+                Instantiate(hammerGrenade, arm1.position, arm1.rotation);
+            else
+                Instantiate(hammerGrenade, arm2.position, arm2.rotation);
         }
 
         if (item.tag == "Carpal")
