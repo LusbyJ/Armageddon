@@ -87,7 +87,7 @@ public class PickUp : MonoBehaviour
                     if (item1 == null)
                     {
                         item1 = pickUpItem.gameObject;
-                        item1.GetComponent<Weapon>().holding = 1;
+                        item1.GetComponent<Weapon>().spot = 1;
                         item1.GetComponent<Weapon>().pickedUp = 1;
                         item1.transform.position = arm1.position;
                         item1.transform.parent = transform;
@@ -98,7 +98,7 @@ public class PickUp : MonoBehaviour
                     else
                     {
                         item2 = pickUpItem.gameObject;
-                        item2.GetComponent<Weapon>().holding = 1;
+                        item2.GetComponent<Weapon>().spot = 1;
                         item1.GetComponent<Weapon>().pickedUp = 1;
                         item2.transform.position = arm1.position;
                         item2.transform.parent = transform;
@@ -116,7 +116,7 @@ public class PickUp : MonoBehaviour
                     if (item2 == null)
                     {
                         item2 = pickUpItem.gameObject;
-                        item2.GetComponent<Weapon>().holding = 2;
+                        item2.GetComponent<Weapon>().spot = 2;
                         item2.GetComponent<Weapon>().pickedUp = 1;
                         item2.transform.position = arm2.position;
                         item2.transform.parent = transform;
@@ -127,7 +127,7 @@ public class PickUp : MonoBehaviour
                     else
                     {
                         item1 = pickUpItem.gameObject;
-                        item1.GetComponent<Weapon>().holding = 2;
+                        item1.GetComponent<Weapon>().spot = 2;
                         item1.GetComponent<Weapon>().pickedUp = 1;
                         item1.transform.position = arm2.position;
                         item1.transform.parent = transform;
@@ -214,7 +214,7 @@ public class PickUp : MonoBehaviour
                 Instantiate(cannonGrenade, arm2.position, arm2.rotation);
         }
 
-        item.GetComponent<Weapon>().holding = 0;
+        item.GetComponent<Weapon>().spot = 0;
         item.transform.parent = null;
 
         Destroy(item);
@@ -223,11 +223,11 @@ public class PickUp : MonoBehaviour
 
         if (spot == 1)
         {
-            left = false;
+            left = true;
         }
         else
         {
-            right = false;
+            right = true;
         }
     }
 }

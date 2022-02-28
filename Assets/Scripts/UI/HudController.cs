@@ -35,6 +35,7 @@ public class HudController : MonoBehaviour
     private Vector2 pinActivePos=new Vector2(0,223);
     private Vector2 pinInactivePos=new Vector2(0,350);
     public GameObject pinBar;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -91,7 +92,7 @@ public class HudController : MonoBehaviour
               hudArmBarMain.transform.localScale = new Vector3(perc, 1, 1);
               MainIcon.sprite=arm1.weaponIcon;
               //Move the UI arm if it's active
-              if(arm1.holding==1){
+              if(Weapon.holding1 == 1){
                 mainPos.target=new Vector2(armActivePos.x,armActivePos.y);
               }else{
                 mainPos.target=new Vector2(armInactivePos.x,armInactivePos.y);
@@ -113,7 +114,7 @@ public class HudController : MonoBehaviour
               //change icon sprite
               BackIcon.sprite=arm2.weaponIcon;
               //Move the UI arm if it's active
-              if(arm2.holding==1){
+              if(Weapon.holding2 == 1){
                 backPos.target=new Vector2(-armActivePos.x,armActivePos.y);
               }else{
                 backPos.target=new Vector2(-armInactivePos.x,armInactivePos.y);
