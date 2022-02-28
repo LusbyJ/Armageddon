@@ -8,6 +8,8 @@ public class PickUp : MonoBehaviour
     public GameObject carpalGrenade;
     public GameObject cannonGrenade;
     public GameObject swordGrenade;
+    public GameObject hammerGrenade;
+    public GameObject newKey;
     public Transform arm1;
     public Transform arm2;
     public Transform melee;
@@ -34,7 +36,7 @@ public class PickUp : MonoBehaviour
     void Update()
     {
         //Call Pick up item on user input
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Pickup") || Input.GetKeyDown(KeyCode.F))
         {
             if (!left || !right)
             {
@@ -177,12 +179,29 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
-        if (item.tag == "Melee")
+
+        if (item.tag == "Key")
+        {
+            if (spot == 1)
+                Instantiate(newKey, arm1.position, arm1.rotation);
+            else
+                Instantiate(newKey, arm2.position, arm2.rotation);
+        }
+
+        if (item.name == "Sword")
         {
             if (spot == 1)
                 Instantiate(swordGrenade, arm1.position, arm1.rotation);
             else
                 Instantiate(swordGrenade, arm2.position, arm2.rotation);
+        }
+
+        if(item.name == "Hammer")
+        {
+            if (spot == 1)
+                Instantiate(hammerGrenade, arm1.position, arm1.rotation);
+            else
+                Instantiate(hammerGrenade, arm2.position, arm2.rotation);
         }
 
         if (item.tag == "Carpal")
@@ -194,7 +213,7 @@ public class PickUp : MonoBehaviour
         }
 
         if (item.tag == "Cannon")
-        { 
+        {
             if (spot == 1)
                 Instantiate(cannonGrenade, arm1.position, arm1.rotation);
             else
@@ -203,8 +222,10 @@ public class PickUp : MonoBehaviour
 
         item.GetComponent<Weapon>().holding = 0;
         item.transform.parent = null;
+
         Destroy(item);
         item = null;
+
 
         if (spot == 1)
         {
@@ -218,7 +239,6 @@ public class PickUp : MonoBehaviour
 
     //Swap arms
     void swapArms()
-
     {
         //If only one arm being held
         if ((item1 == null) && (item2 != null))

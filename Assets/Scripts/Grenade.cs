@@ -13,12 +13,12 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Throw to the right
+        //rb.velocity = new Vector2(4f, 3f) * speed;
+        //rb.velocity = new Vector2(-4f, 3f) * speed;
         if (GameObject.Find("Character").GetComponent<PlayerController>().m_FacingRight == true)
         {
             rb.velocity = new Vector2(4f, 3f) * speed;
         }
-        //Throw to the left
         else
         {
             rb.velocity = new Vector2(-4f, 3f) * speed;
@@ -27,7 +27,7 @@ public class Grenade : MonoBehaviour
 
 
 
-    //If grenade hits object destroy it, if enemy hit cause damage
+    //If bullet hits object destroy it, if enemy hit cause damage
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
         if (hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.layer != 3)
@@ -58,7 +58,10 @@ public class Grenade : MonoBehaviour
                 }
                 
             }
-            Destroy(gameObject);
+            if (gameObject.name != "newKey")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
