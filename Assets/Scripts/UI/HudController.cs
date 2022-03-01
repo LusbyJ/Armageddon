@@ -75,11 +75,11 @@ public class HudController : MonoBehaviour
           emergency2Image.sprite=emergencyBroken;
         }
         //pin key active
-        if(false){
+        if(character.GetComponent<PickUp>().item1.name=="PinKey"){
           pinPos.target=new Vector2(pinActivePos.x,pinActivePos.y);
           hudArmMain.SetActive(false);
           hudArmBack.SetActive(false);
-          float perc=0.5f;
+          float perc = Mathf.Clamp((float)arm2.integrity / (float)arm2.maxIntegrity, 0, 1);
           pinBar.transform.localScale = new Vector3(perc, 1, 1);
         }else{
           pinPos.target=new Vector2(pinInactivePos.x,pinInactivePos.y);
