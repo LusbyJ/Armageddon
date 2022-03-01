@@ -223,11 +223,11 @@ public class PickUp : MonoBehaviour
 
         if (spot == 1)
         {
-            left = true;
+            left = false;
         }
         else
         {
-            right = true;
+            right = false;
         }
     }
 }
