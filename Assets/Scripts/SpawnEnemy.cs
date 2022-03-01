@@ -13,6 +13,8 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject character;
     public int enemyCount = 0;
     public int enemyMax = 5;
+    public int groundRangeDamage = 15;
+    public int flyingRangeDamage = 15;
 
 
 
@@ -43,6 +45,7 @@ public class SpawnEnemy : MonoBehaviour
         b.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
         b.GetComponent<Enemy>().enemySpawn = gameObject;
         b.GetComponent<EnemyAI>().stopwatch = stopwatch;
+        b.GetComponent<RangeAttack>().damage = groundRangeDamage;
         enemyCount++;
     }
 
@@ -54,6 +57,7 @@ public class SpawnEnemy : MonoBehaviour
         c.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
         c.GetComponent<Enemy>().enemySpawn = gameObject;
         c.GetComponent<EnemyAI>().stopwatch = stopwatch;
+        c.GetComponent<RangeAttack>().damage = flyingRangeDamage;
         enemyCount++;
     }
 

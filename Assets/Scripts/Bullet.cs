@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
         if(!enemyFire)
             shootDirection = Weapon.shootDirection;
 
-        Debug.Log("Shoot Direction is " + shootDirection);
         //Change the rotation of the bullet in relation to angle shot
         if (shootDirection.x < 0)
             rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
@@ -32,7 +31,6 @@ public class Bullet : MonoBehaviour
     //If bullet hits object destroy it, if enemy hit cause damage
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log("Bullet will be destroyed");
         if(hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.layer != 3 && hitInfo.gameObject.layer != 2 &&!enemyFire)
         {
             Enemy enemy = hitInfo.GetComponent<Enemy>();

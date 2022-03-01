@@ -12,6 +12,7 @@ public class RangeAttack : MonoBehaviour
     public Vector3 shootDirection;
     public float waitTime = 3f;
     public int numBullets = 0;
+    public int damage;
     public Vector3 attackRange = new Vector3(10f, 5f, 0f);
 
     //void OnTriggerEnter2D (Collider2D other)
@@ -55,5 +56,6 @@ public class RangeAttack : MonoBehaviour
         a.GetComponent<Bullet>().enemyFire = true;
         a.GetComponent<Bullet>().shootDirection = shootDirection;
         a.GetComponent<Bullet>().enemy = gameObject;
+        a.GetComponent<Bullet>().damage = damage;
     }
 }
