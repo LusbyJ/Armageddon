@@ -163,10 +163,11 @@ MonoBehaviour:
   character: {fileID: 0}
   bullet: {fileID: 0}
   holding: 0
+  spot: 0
   pickedUp: 0
-  damage: 20
+  damage: 1
   waitTime: 0.1
-  maxIntegrity: 100
-  integrity: 100
+  maxIntegrity: 300
+  integrity: 300
   weaponIcon: {fileID: 21300000, guid: c65504f79fff41d4a809cb1f95e14a94, type: 3}
   attacking: 0

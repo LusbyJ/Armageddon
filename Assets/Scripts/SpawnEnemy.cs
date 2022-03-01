@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour   
+public class SpawnEnemy : MonoBehaviour
 {
     public GameObject meleeEnemyPrefab;
     public GameObject groundRangeEnemyPrefab;
@@ -65,17 +65,16 @@ public class SpawnEnemy : MonoBehaviour
             if (enemyCount < enemyMax)
             {
                 int enemy = Random.Range(1, 4);
-                enemy = 4;
                 if (enemy == 1)
                     spawnMeleeEnemy();
                 else if (enemy == 2)
                     spawnRangeGroundEnemy();
                 else
                     spawnRangeFlyingEnemy();
-                    
+
             }
         }
     }
 
-    
+
 }
