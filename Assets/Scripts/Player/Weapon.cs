@@ -8,6 +8,9 @@ public class Weapon : MonoBehaviour
     public GameObject character;
     public GameObject bullet;
     public int holding = 0;
+    public static int holding1 = 0;
+    public static int holding2 = 0;
+    public int spot = 0;
     public int pickedUp = 0;
     public int damage;   //damage done to integrity when shot
     public float waitTime;
@@ -27,8 +30,10 @@ public class Weapon : MonoBehaviour
 
         //Check if the mouse is clicked and weapon is being held
         //Only shoot if the co_routine has finished executing
-        if (Input.GetMouseButton(0) && holding == 1 && executed)
+        if (Input.GetMouseButton(0) && spot == 1 && executed)
         {
+            holding1 = 1;
+            holding2 = 0;
             shootDirection = Input.mousePosition;
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
@@ -51,8 +56,11 @@ public class Weapon : MonoBehaviour
 
         //Check if the mouse is clicked and weapon is being held
         //Only shoot if the co_routine has finished executing
-        if (Input.GetMouseButton(1) && holding == 2 && executed)
+        if (Input.GetMouseButton(1) && spot == 2 && executed)
         {
+            holding2 = 1; 
+            holding1 = 0;
+           
             shootDirection = Input.mousePosition;
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
@@ -91,7 +99,7 @@ public class Weapon : MonoBehaviour
             PickUp.left = false;
             GetComponent<PickUp>().item1 = null;
 
-            holding = 0;
+            spot = 0;
             GetComponent<PickUp>().item1.transform.parent = null;
         }
         yield return new WaitForSeconds(waitTime);
@@ -115,20 +123,20 @@ public class Weapon : MonoBehaviour
         {
             Destroy(gameObject);
 
-            if (holding == 1)
+            if (spot == 1)
             {
                 PickUp.left = false;
                 GetComponent<PickUp>().item1 = null;
 
-                holding = 0;
+                spot = 0;
                 GetComponent<PickUp>().item1.transform.parent = null;
             }
-            if(holding == 2)
+            if(spot == 2)
             {
                 PickUp.right = false;
                 GetComponent<PickUp>().item2 = null;
 
-                holding = 0;
+                spot = 0;
                 GetComponent<PickUp>().item2.transform.parent = null;
             }
         }

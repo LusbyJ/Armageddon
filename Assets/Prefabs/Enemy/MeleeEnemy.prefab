@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d54e493911df5f389758156ca0cdce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 25
   enemySpawn: {fileID: 0}
 --- !u!1 &7025783236121208394
 GameObject:
