@@ -17,11 +17,8 @@ public class PickUp : MonoBehaviour
     public Vector3 Direction { get; set; }
     private float speed = 20f;
 
-
-
-    // public ProjectileBehaviour LaunchProjectilePrefab;
-    //public Transform LaunchOffset;
-
+    //Flag to indicate if holding pinkey
+    public bool hasKey = false;
 
     //Objects for arm1 and arm2
     public GameObject item1;
@@ -31,6 +28,7 @@ public class PickUp : MonoBehaviour
     //Flags to indicate if arm slot is full, left is arm1, right is arm2
     public static bool left;
     public static bool right;
+    
     bool flip;
 
     void Update()
@@ -79,8 +77,22 @@ public class PickUp : MonoBehaviour
                 pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
+            if(pickUpItem.gameObject.tag == "Key" && !left && !right)
+            {
+                item1 = pickUpItem.gameObject;
+                item1.GetComponent<Weapon>().spot = 1;
+                item1.GetComponent<Weapon>().pickedUp = 1;
+                Weapon.holding1 = 1;
+                item1.transform.position = arm1.position;
+                item1.transform.parent = transform;
+                if (item1.GetComponent<Rigidbody2D>())
+                    item1.GetComponent<Rigidbody2D>().simulated = false;
+                left = true;
+                hasKey = true;
+            }
+
             //If no arm on left pick up left arm
-            if (!left)
+            else if (!left && pickUpItem.gameObject.tag != "Key" && !hasKey)
             {
                 if (pickUpItem.gameObject.transform.position != arm2.position)
                 {
@@ -109,7 +121,7 @@ public class PickUp : MonoBehaviour
                 }
             }
             //If no arm on right pick up right arm
-            else if (!right)
+            else if (!right && pickUpItem.gameObject.tag != "Key" && !hasKey)
             {
                 if (pickUpItem.gameObject.transform.position != arm1.position)
                 {
@@ -143,30 +155,24 @@ public class PickUp : MonoBehaviour
     //Check which arm to throw
     void checkThrow()
     {
-        //If holding 2 arms or just the lest arm, Throw left arm
-        if ((left && right) || (left && !right))
-
+        if(item1 != null && Weapon.holding1 == 1)
         {
-            if (item1 != null && item1.transform.position == arm1.position)
-            {
-                throwArm(item1, 1);
-            }
-            else
-            {
-                throwArm(item2, 1);
-            }
+            throwArm(item1, 1);
         }
 
-        else if (!left && right)
+        else if(item2 != null && Weapon.holding2 == 1)
         {
-            if (item1 != null && item1.transform.position == arm2.position)
-            {
-                throwArm(item1, 2);
-            }
-            else
-            {
-                throwArm(item2, 2);
-            }
+            throwArm(item2, 2);
+        }
+
+        else if(item1 != null && Weapon.holding1 == 0)
+        {
+            throwArm(item1, 1);
+        }
+
+        else if(item2 != null && Weapon.holding2 == 0)
+        {
+            throwArm(item2, 2);
         }
     }
 
@@ -176,10 +182,8 @@ public class PickUp : MonoBehaviour
 
         if (item.tag == "Key")
         {
-            if (spot == 1)
-                Instantiate(newKey, arm1.position, arm1.rotation);
-            else
-                Instantiate(newKey, arm2.position, arm2.rotation);
+            Instantiate(newKey, arm1.position, arm1.rotation);
+            hasKey = false;
         }
 
         if (item.name == "Sword")
@@ -214,9 +218,9 @@ public class PickUp : MonoBehaviour
                 Instantiate(cannonGrenade, arm2.position, arm2.rotation);
         }
 
+        //destroy item and reset values
         item.GetComponent<Weapon>().spot = 0;
         item.transform.parent = null;
-
         Destroy(item);
         item = null;
 
