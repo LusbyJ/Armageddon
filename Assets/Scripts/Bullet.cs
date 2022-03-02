@@ -10,7 +10,8 @@ public class Bullet : MonoBehaviour
     public Vector3 shootDirection;
     public bool enemyFire = false;
     public GameObject enemy;
-    
+    public GameObject explosion;
+
 
     void Start()
     {
@@ -22,10 +23,10 @@ public class Bullet : MonoBehaviour
             rb.transform.rotation = Quaternion.Euler(0, 0, shootDirection.y * -36);
         else
             rb.transform.rotation = Quaternion.Euler(new Vector3(0, 180, shootDirection.y * -36));
-        
+
 
         rb.velocity = (new Vector2(shootDirection.x, shootDirection.y).normalized) * bulletSpeed;
-      
+
     }
 
     //If bullet hits object destroy it, if enemy hit cause damage
@@ -35,9 +36,10 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemy = hitInfo.GetComponent<Enemy>();
             if(enemy != null)
-            {       
+            {
                 enemy.TakeDamage(damage);
             }
+            GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else if(enemyFire)
@@ -50,6 +52,7 @@ public class Bullet : MonoBehaviour
                     health.TakeDamage(damage);
                 }
             }
+            GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
             enemy.GetComponent<RangeAttack>().numBullets--;
         }

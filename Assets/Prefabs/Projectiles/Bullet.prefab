@@ -140,3 +140,4 @@ MonoBehaviour:
   shootDirection: {x: 0, y: 0, z: 0}
   enemyFire: 0
   enemy: {fileID: 0}
+  explosion: {fileID: 4665523084265693407, guid: 4e5d7cb6f87ac26439829e18a20ded88, type: 3}

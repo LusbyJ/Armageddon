@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   enemySpawn: {fileID: 0}
+  explosion: {fileID: 8275479821393253718, guid: 5375aea70c57cf6479603f828e2f097f, type: 3}
 --- !u!114 &1404043951057098984
 MonoBehaviour:
   m_ObjectHideFlags: 0

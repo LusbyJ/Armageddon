@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour{
 
     public int health = 100;
     public GameObject enemySpawn;
-    
+    public GameObject explosion;
+
     public void TakeDamage(int damage)
     {
 
@@ -21,17 +22,18 @@ public class Enemy : MonoBehaviour{
 
     private IEnumerator Blink()
     {
-       
+
             GetComponent<Renderer>().material.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             GetComponent<Renderer>().material.color = Color.white;
             StopCoroutine("Blink");
-        
+
     }
 
 
     void Die()
     {
+        GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
         enemySpawn.GetComponent<SpawnEnemy>().enemyCount--;
     }

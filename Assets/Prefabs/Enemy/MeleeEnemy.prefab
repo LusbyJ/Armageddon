@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   enemySpawn: {fileID: 0}
+  explosion: {fileID: 8275479821393253718, guid: 5375aea70c57cf6479603f828e2f097f, type: 3}
 --- !u!1 &7025783236121208394
 GameObject:
   m_ObjectHideFlags: 0
