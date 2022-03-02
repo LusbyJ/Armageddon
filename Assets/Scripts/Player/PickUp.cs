@@ -9,7 +9,6 @@ public class PickUp : MonoBehaviour
     public GameObject cannonGrenade;
     public GameObject swordGrenade;
     public GameObject hammerGrenade;
-    public GameObject newKey;
     public Transform arm1;
     public Transform arm2;
     public Transform melee;
@@ -18,7 +17,7 @@ public class PickUp : MonoBehaviour
     private float speed = 20f;
 
     //Flag to indicate if holding pinkey
-    public bool hasKey = false;
+    public static bool hasKey = false;
 
     //Objects for arm1 and arm2
     public GameObject item1;

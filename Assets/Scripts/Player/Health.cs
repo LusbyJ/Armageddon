@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
         GameObject item = GetComponent<PickUp>().item1;
         GameObject item2 = GetComponent<PickUp>().item2;
 
-        if (GetComponent<PickUp>().hasKey)
+        if (PickUp.hasKey)
         {
             item.GetComponent<Weapon>().integrity -= damage;
             if (item.GetComponent<Weapon>().integrity <= 0)
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
                 item.transform.parent = null;
                 item = null;
                 PickUp.left = false;
-                GetComponent<PickUp>().hasKey = false;
+                PickUp.hasKey = false;
             }
         }
 

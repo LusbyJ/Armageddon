@@ -32,7 +32,8 @@ public class Bullet : MonoBehaviour
     //If bullet hits object destroy it, if enemy hit cause damage
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if(hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.layer != 3 && hitInfo.gameObject.layer != 2 &&!enemyFire)
+        if(hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.name != "ExitDoor"
+            && hitInfo.gameObject.layer != 3 && hitInfo.gameObject.layer != 2 &&!enemyFire)
         {
             Enemy enemy = hitInfo.GetComponent<Enemy>();
             if(enemy != null)
