@@ -265,7 +265,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_GroundCheck: {fileID: 5461871509079025292}
   m_CeilingCheck: {fileID: 5461871510700563398}
   m_CrouchDisableCollider: {fileID: 0}
@@ -303,6 +303,8 @@ MonoBehaviour:
   character: {fileID: 5461871509899194067}
   carpalGrenade: {fileID: 6142363382326533937, guid: 394f97c16b4ac3dbea0da42b635913e1, type: 3}
   cannonGrenade: {fileID: 4752827195520739306, guid: c9c7e3ca71c0667b98efe055927eeebd, type: 3}
+  swordGrenade: {fileID: 0}
+  hammerGrenade: {fileID: 0}
   arm1: {fileID: 6558204674863389122}
   arm2: {fileID: 4269729739014519280}
   melee: {fileID: 0}

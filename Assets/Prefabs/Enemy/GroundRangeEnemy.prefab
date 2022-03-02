@@ -224,7 +224,7 @@ MonoBehaviour:
   angle: 0.4
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 59
   groundCheck: {fileID: 5077656360077929338}
   facingRight: 1
   OnLandEvent:
