@@ -221,9 +221,13 @@ public class PickUp : MonoBehaviour
         //destroy item and reset values
         item.GetComponent<Weapon>().spot = 0;
         item.transform.parent = null;
+        
+     
+        
         Destroy(item);
         item = null;
-
+        
+         
 
         if (spot == 1)
         {

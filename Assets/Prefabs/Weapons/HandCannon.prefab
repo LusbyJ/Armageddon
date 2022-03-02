@@ -175,13 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd056478b15ee13785a7ead110882d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: HandCannon
   firePoint: {fileID: 1990597547650588119}
+  character: {fileID: 0}
   bullet: {fileID: 3687545202716563026, guid: 6a19eb06a569e321a90e11abb1f5693b, type: 3}
   holding: 0
+  spot: 0
   pickedUp: 0
   damage: 15
   waitTime: 1
   maxIntegrity: 300
   integrity: 300
   weaponIcon: {fileID: 21300000, guid: 936c1417957640d4d90f8e7c0bea0729, type: 3}
+  attacking: 0

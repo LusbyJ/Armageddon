@@ -21,10 +21,10 @@ public class Health : MonoBehaviour
             item.GetComponent<Weapon>().integrity -= damage;
             if (item.GetComponent<Weapon>().integrity <= 0)
             {
-                Destroy(GetComponent<PickUp>().item1);
+                Destroy(item);
                 Weapon.holding1 = 0;
-                GetComponent<PickUp>().item1.transform.parent = null;
-                GetComponent<PickUp>().item1 = null;
+                item.transform.parent = null;
+                item = null;
                 PickUp.left = false;
                 GetComponent<PickUp>().hasKey = false;
             }
@@ -36,10 +36,10 @@ public class Health : MonoBehaviour
             item.GetComponent<Weapon>().integrity -= damage;
             if (item.GetComponent<Weapon>().integrity <= 0)
             {
-                Destroy(GetComponent<PickUp>().item1);
+                Destroy(item);
                 Weapon.holding1 = 0;
-                GetComponent<PickUp>().item1.transform.parent = null;
-                GetComponent<PickUp>().item1 = null;
+                item.transform.parent = null;
+                item = null;
                 PickUp.left = false;
             }
         }
@@ -50,10 +50,10 @@ public class Health : MonoBehaviour
             item2.GetComponent<Weapon>().integrity -= damage;
             if (item2.GetComponent<Weapon>().integrity <= 0)
             {
-                Destroy(GetComponent<PickUp>().item2);
+                Destroy(item2);
                 Weapon.holding2 = 0;
-                GetComponent<PickUp>().item2.transform.parent = null;
-                GetComponent<PickUp>().item2 = null;
+                item2.transform.parent = null;
+                item2 = null;
                 PickUp.right = false;
             }
         }
@@ -64,10 +64,10 @@ public class Health : MonoBehaviour
             item.GetComponent<Weapon>().integrity -= damage;
             if (item.GetComponent<Weapon>().integrity <= 0)
             {
-                Destroy(GetComponent<PickUp>().item1);
+                Destroy(item);
                 Weapon.holding1 = 0;
-                GetComponent<PickUp>().item1.transform.parent = null;
-                GetComponent<PickUp>().item1 = null;
+                item.transform.parent = null;
+                item = null;
 
             }
         }
@@ -78,10 +78,10 @@ public class Health : MonoBehaviour
             item2.GetComponent<Weapon>().integrity -= damage;
             if (item2.GetComponent<Weapon>().integrity <= 0)
             {
-                Destroy(GetComponent<PickUp>().item2);
+                Destroy(item2);
                 Weapon.holding2 = 0;
-                GetComponent<PickUp>().item2.transform.parent = null;
-                GetComponent<PickUp>().item2 = null;
+                item2.transform.parent = null;
+                item2 = null;
                 PickUp.right = false;
             }
         }

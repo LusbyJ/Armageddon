@@ -27,7 +27,6 @@ public class Weapon : MonoBehaviour
     void Update()
     {
 
-
         //Check if the mouse is clicked and weapon is being held
         //Only shoot if the co_routine has finished executing
         if (Input.GetMouseButton(0) && spot == 1 && executed)
@@ -40,7 +39,7 @@ public class Weapon : MonoBehaviour
             shootDirection = shootDirection - transform.position;
 
 
-            if (gameObject.tag == "Melee" && !attacking)
+            if ((gameObject.tag == "Melee" || gameObject.tag == "Key") && !attacking)
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
@@ -90,17 +89,30 @@ public class Weapon : MonoBehaviour
 
         //Lose integrity when shooting
         integrity = integrity - damage;
-
         //If integrity reaches 0, start sequence to destroy item
         if (integrity <= 0)
         {
-            Destroy(gameObject);
-
-            PickUp.left = false;
-            GetComponent<PickUp>().item1 = null;
-
-            spot = 0;
-            GetComponent<PickUp>().item1.transform.parent = null;
+            if(spot == 1)
+            {
+                Debug.Log("Arm1");
+                Destroy(gameObject);
+                PickUp.left = false;
+                GetComponent<PickUp>().item1 = null;
+                holding1 = 0;
+                spot = 0;
+                GetComponent<PickUp>().item1.transform.parent = null;
+            }
+            
+            if(spot == 2)
+            {
+                Destroy(gameObject);
+                PickUp.right = false;
+                GetComponent<PickUp>().item2 = null;
+                holding2 = 0;
+                spot = 0;
+                GetComponent<PickUp>().item2.transform.parent = null;
+            }
+       
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
