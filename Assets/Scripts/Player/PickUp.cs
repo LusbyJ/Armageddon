@@ -182,8 +182,10 @@ public class PickUp : MonoBehaviour
 
         if (item.tag == "Key")
         {
-            Instantiate(newKey, arm1.position, arm1.rotation);
+            //Instantiate(newKey, arm1.position, arm1.rotation);
+            item.GetComponent<Rigidbody2D>().simulated = true;
             hasKey = false;
+            item1 = null;
         }
 
         if (item.name == "Sword")
@@ -223,10 +225,11 @@ public class PickUp : MonoBehaviour
         item.transform.parent = null;
         
      
-        
-        Destroy(item);
-        item = null;
-        
+        if(item.tag != "Key")
+        {
+            Destroy(item);
+            item = null;
+        }
          
 
         if (spot == 1)
