@@ -99,19 +99,22 @@ public class EnemyAI : MonoBehaviour
     // Checks whether the enemy needs to jumo or not.
     void Jump()
     {
-        bool wasGrounded = grounded;
-        grounded = false;
-
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        if(groundCheck != null)
         {
-            if (colliders[i].gameObject != gameObject)
+            bool wasGrounded = grounded;
+            grounded = false;
+
+            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                grounded = true;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
+                if (colliders[i].gameObject != gameObject)
+                {
+                    grounded = true;
+                    if (!wasGrounded)
+                        OnLandEvent.Invoke();
+                }
             }
         }
     }
