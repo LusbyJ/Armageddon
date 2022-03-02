@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     public Sprite weaponIcon;
     public bool attacking;
     bool executed = true;
+    bool stabbing = false;
 
     public static Vector3 shootDirection;
 
@@ -81,6 +82,11 @@ public class Weapon : MonoBehaviour
                 
             }
         }
+        if(stabbing)
+        {
+            gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            gameObject.transform.position = character.transform.Find("Melee").position;
+        }
     }
 
     //Shoots the bullet and then waits for the specified time in waitTime
@@ -126,8 +132,8 @@ public class Weapon : MonoBehaviour
     private IEnumerator Stab()
     {
         executed = false;
-        gameObject.GetComponent<Rigidbody2D>().simulated = true;
-        gameObject.transform.position = character.transform.Find("Melee").position;
+        stabbing = true;
+       
 
         //Lose integrity when shooting
         integrity = integrity - damage;
@@ -160,9 +166,9 @@ public class Weapon : MonoBehaviour
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
+        stabbing = false;
         gameObject.transform.position = character.transform.Find("Arm1").position;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
-
     }
 
     //Shoots the bullet and then waits for the specified time in waitTime
@@ -178,4 +184,5 @@ public class Weapon : MonoBehaviour
         attacking = false;
      
     }
+  
 }
