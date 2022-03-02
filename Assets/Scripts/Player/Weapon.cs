@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Weapon : MonoBehaviour
 {
@@ -133,6 +135,10 @@ public class Weapon : MonoBehaviour
         //If integrity reaches 0, start sequence to destroy item
         if (integrity <= 0)
         {
+            if(gameObject.tag == "Key")
+            {
+                SceneManager.LoadScene("GameOver");
+            }
             Destroy(gameObject);
 
             if (spot == 1)

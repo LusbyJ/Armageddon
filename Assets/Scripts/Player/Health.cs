@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
             if (item.GetComponent<Weapon>().integrity <= 0)
             {
                 Destroy(item);
+                SceneManager.LoadScene("GameOver");
                 Weapon.holding1 = 0;
                 item.transform.parent = null;
                 item = null;
@@ -90,7 +91,6 @@ public class Health : MonoBehaviour
         else
         {
             health -= 1;
-            Debug.Log("Players health = " + health);
             if (health <= 0)
             {
                 Die();
