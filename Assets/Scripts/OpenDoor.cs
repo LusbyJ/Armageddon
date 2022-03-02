@@ -14,7 +14,7 @@ public class OpenDoor : MonoBehaviour
         if(collision.gameObject.tag == "Player" && PickUp.hasKey)
         {
             Debug.Log("Open door");
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Victory");
         }
     }
 }
