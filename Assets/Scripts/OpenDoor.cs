@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class OpenDoor : MonoBehaviour
 {
-
+    public Animator animator;
 
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Ran into door");
         if(collision.gameObject.tag == "Player" && PickUp.hasKey)
         {
-            Debug.Log("Open door");
-            SceneManager.LoadScene("Victory");
+            animator.SetTrigger("openDoor");
         }
     }
 }
