@@ -94,6 +94,14 @@ public class Weapon : MonoBehaviour
     {
         executed = false;
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+        if(gameObject.tag == "Carpal")
+        {
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.carpalGun);
+        }
+        if(gameObject.name == "HandCannon")
+        {
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.cannonGun);
+        }
 
         //Lose integrity when shooting
         integrity = integrity - damage;
@@ -133,7 +141,16 @@ public class Weapon : MonoBehaviour
     {
         executed = false;
         stabbing = true;
-       
+        //Play sword audio
+        if(gameObject.name == "Sword")
+        {
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
+        }
+        //play hammer audio
+        if(gameObject.name == "Hammer")
+        {
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
+        }
 
         //Lose integrity when shooting
         integrity = integrity - damage;

@@ -148,6 +148,7 @@ public class PickUp : MonoBehaviour
                     }
                 }
             }
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.armPickUp);
         }
     }
 
@@ -178,7 +179,7 @@ public class PickUp : MonoBehaviour
     //Throw specified arm and destroy game object
     void throwArm(GameObject item, int spot)
     {
-
+        
         if (item.tag == "Key")
         {
             //Instantiate(newKey, arm1.position, arm1.rotation);

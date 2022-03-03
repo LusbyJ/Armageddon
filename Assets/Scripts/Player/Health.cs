@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
 
             if (PickUp.hasKey)
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.playerDamage);
                 item.GetComponent<Weapon>().integrity -= damage;
                 if (item.GetComponent<Weapon>().integrity <= 0)
                 {
@@ -38,6 +39,7 @@ public class Health : MonoBehaviour
             //If left arm last used, take damage to left arm
             else if (Weapon.holding1 == 1 && item != null)
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.playerDamage);
                 item.GetComponent<Weapon>().integrity -= damage;
                 if (item.GetComponent<Weapon>().integrity <= 0)
                 {
@@ -52,6 +54,7 @@ public class Health : MonoBehaviour
             //If right arm last used, take damage to the right arm
             else if (Weapon.holding2 == 1 && item2 != null)
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.playerDamage);
                 item2.GetComponent<Weapon>().integrity -= damage;
                 if (item2.GetComponent<Weapon>().integrity <= 0)
                 {
@@ -66,6 +69,7 @@ public class Health : MonoBehaviour
             //If no arm last used and arm present on left, take damage to left arm
             else if (Weapon.holding1 == 0 && item != null)
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.playerDamage);
                 item.GetComponent<Weapon>().integrity -= damage;
                 if (item.GetComponent<Weapon>().integrity <= 0)
                 {
@@ -80,6 +84,7 @@ public class Health : MonoBehaviour
             //If no arm last used and arm present on right but no left, take damage to right arm
             else if(Weapon.holding2 == 0 && item2 != null)
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.playerDamage);
                 item2.GetComponent<Weapon>().integrity -= damage;
                 if (item2.GetComponent<Weapon>().integrity <= 0)
                 {
@@ -94,6 +99,7 @@ public class Health : MonoBehaviour
             //If no arms present, take core damage
             else
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.coreDamage);
                 health -= 1;
                 if (health <= 0)
                 {
@@ -107,6 +113,7 @@ public class Health : MonoBehaviour
     private IEnumerator Blink()
     {
         hit = true;
+
         for(int i = 0; i < 5; i++)
         {
             GetComponent<Renderer>().material.color = Color.clear;

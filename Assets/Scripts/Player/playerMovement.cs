@@ -26,6 +26,7 @@ public class playerMovement : MonoBehaviour
         //Check for jump
         if(Input.GetButtonDown("Jump"))
         {
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.jumping);
             jump = true;
             animator.SetBool("IsJumping", true);
         }
