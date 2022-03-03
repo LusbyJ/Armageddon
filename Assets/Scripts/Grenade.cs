@@ -13,8 +13,6 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb.velocity = new Vector2(4f, 3f) * speed;
-        //rb.velocity = new Vector2(-4f, 3f) * speed;
         if (GameObject.Find("Character").GetComponent<PlayerController>().m_FacingRight == true)
         {
             rb.velocity = new Vector2(4f, 3f) * speed;
@@ -32,6 +30,7 @@ public class Grenade : MonoBehaviour
     {
         if (hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.layer != 3)
         {
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.armBlowUp);
             if (splashRange > 0)
             {
                 var hitColliders = Physics2D.OverlapCircleAll(transform.position, splashRange);

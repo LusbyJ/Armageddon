@@ -15,7 +15,8 @@ public class SfxManager : MonoBehaviour
     public AudioClip hammer;
     public AudioClip sword;
     public AudioClip jumping;
-
+    public AudioClip enemyBlowUp;
+    public AudioClip enemyTakeDamage;
     public static SfxManager sfxInstance;
 
     private void Awake()
