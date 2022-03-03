@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: 7a40412babe532a4cb225d99a0d76870
+guid: 24bde3d0dfb302849a68886c60cb5876
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4923112248794456973
+    second: ButtonQuitGame_0
+  - first:
+      213: -922196059759322284
+    second: ButtonQuitGame_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +47,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,7 +107,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ButtonQuitGame_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 298
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83a4caa188625440800000000000000
+      internalID: 4923112248794456973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonQuitGame_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 298
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bd7c4d193b333f0800000000000000
+      internalID: -922196059759322284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
