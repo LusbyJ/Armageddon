@@ -45,10 +45,12 @@ public class Bullet : MonoBehaviour
             
             Destroy(gameObject);
         }
-        else if(enemyFire)
+        else if(enemyFire && hitInfo.gameObject.layer != 3 
+            && hitInfo.gameObject.tag != "Enemy" && hitInfo.gameObject.layer != 2)
         {
             if (hitInfo.gameObject.tag == "Player")
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.enemyTakeDamage);
                 Health health = hitInfo.GetComponent<Health>();
                 if (health != null)
                 {
@@ -57,7 +59,8 @@ public class Bullet : MonoBehaviour
             }
             GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
-            enemy.GetComponent<RangeAttack>().numBullets--;
+            if (enemy.GetComponent<RangeAttack>().numBullets > 0)
+                enemy.GetComponent<RangeAttack>().numBullets--;
         }
     }
 }

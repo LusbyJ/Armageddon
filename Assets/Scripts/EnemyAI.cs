@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public Vector3 distFromTarget;
     public bool attack;
     public bool meleeEnemy;
+    public bool flying = false;
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
@@ -61,12 +62,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (meleeEnemy)
             attack = GetComponentInChildren<MeleeAttack>().attack;
-        else
-            attack = GetComponent<RangeAttack>().attack;
 
-        if (attack || !meleeEnemy)
+        if (!meleeEnemy)
         {
-            Debug.Log("Attacked. Now Backing Off.");
+            if (target.position.x >= rb.position.x)
+                distFromTarget = Vector3.right * 4;
+            else if (target.position.x < rb.position.x)
+                distFromTarget = Vector3.left * 4;
+            if (flying)
+                distFromTarget.y = -2;             
+        }
+        else if (attack && meleeEnemy)
+        {
             currentTime = stopwatch.GetComponent<DigitalClock>().currentTime;
             if (target.position.x >= rb.position.x)
                 distFromTarget = Vector3.right * 2;
@@ -74,12 +81,9 @@ public class EnemyAI : MonoBehaviour
                 distFromTarget = Vector3.left * 2;
             if (meleeEnemy)
                 GetComponentInChildren<MeleeAttack>().attack = false;
-            else
-                GetComponent<RangeAttack>().attack = false;
         }
         else if (stopwatch.GetComponent<DigitalClock>().currentTime >= currentTime + waitTime)
         {
-            Debug.Log("Attacking Again");
             distFromTarget = Vector3.zero;
         }
     }
@@ -88,9 +92,9 @@ public class EnemyAI : MonoBehaviour
     // This checks the direction that the enemy is traveling in and flips him accordingly.
     void CheckDir()
     {
-        if (direction.x > 0 && !facingRight)
+        if (target.position.x > rb.position.x && !facingRight)
             Flip();
-        else if (direction.x < 0 && facingRight)
+        else if (target.position.x < rb.position.x && facingRight)
             Flip();
     }
 
@@ -121,7 +125,8 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (grounded && other.gameObject.tag != "Player")
+        if (grounded && other.gameObject.tag != "Player" 
+            && other.gameObject.layer != 3 && other.gameObject.layer != 2)
         {
             grounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));

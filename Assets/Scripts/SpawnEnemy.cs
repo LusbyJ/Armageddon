@@ -31,7 +31,6 @@ public class SpawnEnemy : MonoBehaviour
         GameObject a = Instantiate(meleeEnemyPrefab) as GameObject;
         a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
         a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
-   //     a.GetComponentInChildren<MeleeAttack>().target = character.GetComponent<Transform>();
         a.GetComponent<Enemy>().enemySpawn = gameObject;
         a.GetComponent<EnemyAI>().stopwatch = stopwatch;
         enemyCount++;
@@ -57,6 +56,7 @@ public class SpawnEnemy : MonoBehaviour
         c.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
         c.GetComponent<Enemy>().enemySpawn = gameObject;
         c.GetComponent<EnemyAI>().stopwatch = stopwatch;
+        c.GetComponent<EnemyAI>().flying = true;
         c.GetComponent<RangeAttack>().damage = flyingRangeDamage;
         enemyCount++;
     }

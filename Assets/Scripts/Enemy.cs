@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour{
 
     void Die()
     {
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.enemyBlowUp);
         GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
         enemySpawn.GetComponent<SpawnEnemy>().enemyCount--;
