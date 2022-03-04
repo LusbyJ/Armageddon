@@ -49,7 +49,6 @@ public class RangeAttack : MonoBehaviour
         {
             if (attack)
             {
-                Debug.Log("Shooting");
                 spawnBullet();
                 if (numBullets >= maxBullets)
                     attack = false;
@@ -60,12 +59,12 @@ public class RangeAttack : MonoBehaviour
 
     void spawnBullet()
     {
-            GameObject a = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            a.GetComponent<Bullet>().enemyFire = true;
-            a.GetComponent<Bullet>().shootDirection = shootDirection;
-            a.GetComponent<Bullet>().enemy = gameObject;
-            a.GetComponent<Bullet>().damage = damage;
-            numBullets++;
-            Debug.Log("Bullet" + numBullets);
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.carpalGun);
+        GameObject a = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        a.GetComponent<Bullet>().enemyFire = true;
+        a.GetComponent<Bullet>().shootDirection = shootDirection;
+        a.GetComponent<Bullet>().enemy = gameObject;
+        a.GetComponent<Bullet>().damage = damage;
+        numBullets++;
     }
 }

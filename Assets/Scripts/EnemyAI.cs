@@ -70,9 +70,7 @@ public class EnemyAI : MonoBehaviour
             else if (target.position.x < rb.position.x)
                 distFromTarget = Vector3.left * 4;
             if (flying)
-                distFromTarget.y = -2;
-            Debug.Log(distFromTarget);
-             
+                distFromTarget.y = -2;             
         }
         else if (attack && meleeEnemy)
         {

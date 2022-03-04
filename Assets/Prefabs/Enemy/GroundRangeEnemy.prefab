@@ -214,6 +214,7 @@ MonoBehaviour:
   distFromTarget: {x: 0, y: 0, z: 0}
   attack: 0
   meleeEnemy: 0
+  flying: 0
   speed: 200
   nextWaypointDistance: 3
   stopwatch: {fileID: 0}
@@ -290,11 +291,10 @@ MonoBehaviour:
   attack: 0
   bullet: {fileID: 5674178122323808298, guid: 8612f3f6ce1c36ea99c6b3403ef4eb4d, type: 3}
   shootDirection: {x: 0, y: 0, z: 0}
-  waitTime: 25
   numBullets: 0
   maxBullets: 3
   damage: 0
-  attackRange: {x: 10, y: 5, z: 0}
+  attackRange: {x: 10, y: 2, z: 0}
 --- !u!1 &8243523361096222201
 GameObject:
   m_ObjectHideFlags: 0
