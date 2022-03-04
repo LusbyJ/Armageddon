@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour
         {
             if (hitInfo.gameObject.tag == "Player")
             {
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.enemyTakeDamage);
                 Health health = hitInfo.GetComponent<Health>();
                 if (health != null)
                 {
