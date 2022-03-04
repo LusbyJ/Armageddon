@@ -167,7 +167,8 @@ MonoBehaviour:
   pickedUp: 0
   damage: 1
   waitTime: 0.1
-  maxIntegrity: 300
-  integrity: 300
+  maxIntegrity: 400
+  integrity: 400
   weaponIcon: {fileID: 21300000, guid: c65504f79fff41d4a809cb1f95e14a94, type: 3}
   attacking: 0
+  name: Hand-And-A-Half Sword

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HudController : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class HudController : MonoBehaviour
     private Vector2 pinActivePos=new Vector2(0,223);
     private Vector2 pinInactivePos=new Vector2(0,350);
     public GameObject pinBar;
+    public GameObject nameMain;
+    public GameObject nameBack;
 
 
     // Start is called before the first frame update
@@ -79,7 +82,7 @@ public class HudController : MonoBehaviour
           pinPos.target=new Vector2(pinActivePos.x,pinActivePos.y);
           hudArmMain.SetActive(false);
           hudArmBack.SetActive(false);
-          float perc = Mathf.Clamp((float)character.GetComponent<PickUp>().item1.GetComponent<Weapon>().integrity / 
+          float perc = Mathf.Clamp((float)character.GetComponent<PickUp>().item1.GetComponent<Weapon>().integrity /
                       (float)character.GetComponent<PickUp>().item1.GetComponent<Weapon>().maxIntegrity, 0, 1);
           pinBar.transform.localScale = new Vector3(perc, 1, 1);
         }else{
@@ -92,6 +95,7 @@ public class HudController : MonoBehaviour
               float perc = Mathf.Clamp((float)arm1.integrity / (float)arm1.maxIntegrity, 0, 1);
               hudArmBarMain.transform.localScale = new Vector3(perc, 1, 1);
               MainIcon.sprite=arm1.weaponIcon;
+              nameMain.GetComponent<TextMeshProUGUI>().text = arm1.name;
               //Move the UI arm if it's active
               if(Weapon.holding2 == 1){
                 mainPos.target=new Vector2(armActivePos.x,armActivePos.y);
@@ -114,6 +118,7 @@ public class HudController : MonoBehaviour
               hudArmBarBack.transform.localScale = new Vector3(perc, 1, 1);
               //change icon sprite
               BackIcon.sprite=arm2.weaponIcon;
+              nameBack.GetComponent<TextMeshProUGUI>().text = arm2.name;
               //Move the UI arm if it's active
               if(Weapon.holding1 == 1){
                 backPos.target=new Vector2(-armActivePos.x,armActivePos.y);

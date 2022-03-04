@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     public int integrity;
     public Sprite weaponIcon;
     public bool attacking;
+    public string name;
     bool executed = true;
     bool stabbing = false;
 
@@ -46,13 +47,13 @@ public class Weapon : MonoBehaviour
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
-                
+
             }
 
-            if (gameObject.tag != "Melee" && gameObject.tag != "Key") 
+            if (gameObject.tag != "Melee" && gameObject.tag != "Key")
             {
                 StartCoroutine("Shoot");
-               
+
             }
         }
 
@@ -60,9 +61,9 @@ public class Weapon : MonoBehaviour
         //Only shoot if the co_routine has finished executing
         if (Input.GetMouseButton(1) && spot == 2 && executed)
         {
-            holding2 = 1; 
+            holding2 = 1;
             holding1 = 0;
-           
+
             shootDirection = Input.mousePosition;
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
@@ -73,13 +74,13 @@ public class Weapon : MonoBehaviour
             {
                 StartCoroutine("Stab");
                 StartCoroutine("Attack");
-               
+
             }
 
             if (gameObject.tag != "Melee" && gameObject.tag != "Key")
             {
                 StartCoroutine("Shoot");
-                
+
             }
         }
         if(stabbing)
@@ -118,7 +119,7 @@ public class Weapon : MonoBehaviour
                 spot = 0;
                 GetComponent<PickUp>().item1.transform.parent = null;
             }
-            
+
             if(spot == 2)
             {
                 Destroy(gameObject);
@@ -128,7 +129,7 @@ public class Weapon : MonoBehaviour
                 spot = 0;
                 GetComponent<PickUp>().item2.transform.parent = null;
             }
-       
+
         }
         yield return new WaitForSeconds(waitTime);
         executed = true;
@@ -142,14 +143,14 @@ public class Weapon : MonoBehaviour
         executed = false;
         stabbing = true;
         //Play sword audio
-        if(gameObject.name == "Sword")
+        if(gameObject.name == "Sword" || gameObject.name == "Sword (1)" || gameObject.name == "Sword (2)")
         {
              SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
         }
         //play hammer audio
-        if(gameObject.name == "Hammer")
+        if(gameObject.name == "Hammer" || gameObject.name == "Hammer (1)" || gameObject.name == "Hammer (2)")
         {
-             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.hammer);
         }
 
         //Lose integrity when shooting
@@ -193,13 +194,13 @@ public class Weapon : MonoBehaviour
     {
         executed = false;
         attacking = true;
-      
+
 
 
         yield return new WaitForSeconds(waitTime * 2);
         executed = true;
         attacking = false;
-     
+
     }
-  
+
 }
