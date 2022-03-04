@@ -584,14 +584,15 @@ MonoBehaviour:
     the robots aiming to save humanity rather than destroy it, your goal is to provide
     relief to a nearby stronghold of humans.\n\nWith your modular design, you can
     press SPACE to pick up arms to use as your weapons.  Use LMB or RMB to attack
-    with an arm, and press Q to discard it, throwing it an an enemy for big damage. 
+    with an arm, and press Q to discard it, throwing it at an enemy for big damage. 
     \n\nAs you take damage or attack, your arms will lose integrity.  When one breaks,
     find a backup or suffer the consequences.  If you take three hits without an
     arm, you're done for.\n\nYour goal is to find the door to the human settlement,
-    then find a special arm attachment known as the P1N Key.  The P1N Key is the
-    only thing that will get you through that door, and it'll take up both your arm
-    slots.  If the key is destroyed you're done for, but you can still use Q to drop
-    it temporarily.\n\nBring the key back to the door, and become the savior of humanity."
+    then find a special arm attachment known as the P1N Key. To find it you'll need
+    to destroy a certain number of robots.  The P1N Key is the only thing that will
+    get you through that door, and it'll take up both your arm slots.  If the key
+    is destroyed you're done for, but you can still use Q to drop it temporarily.\n\nBring
+    the key back to the door, and become the savior of humanity."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -301.1706, w: -412.3503}
+  m_margin: {x: 0, y: 0, z: -301.1706, w: -432.46515}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
