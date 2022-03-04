@@ -289,8 +289,9 @@ MonoBehaviour:
   firePoint: {fileID: 4957564969676487431}
   target: {fileID: 0}
   attack: 0
-  bullet: {fileID: 5674178122323808298, guid: 8612f3f6ce1c36ea99c6b3403ef4eb4d, type: 3}
+  bullet: {fileID: 3349707522392772397, guid: 5d7a9814cf5dc6148aae9417822a2201, type: 3}
   shootDirection: {x: 0, y: 0, z: 0}
+  waitTime: 3
   numBullets: 0
   maxBullets: 3
   damage: 0

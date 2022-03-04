@@ -67,7 +67,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (enemyFire && Time.time >= shotAt + 5f)
+        if (enemyFire && Time.time >= shotAt + 10f)
             Destroy(gameObject);
     }
 }
