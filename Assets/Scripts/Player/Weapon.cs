@@ -142,14 +142,14 @@ public class Weapon : MonoBehaviour
         executed = false;
         stabbing = true;
         //Play sword audio
-        if(gameObject.name == "Sword")
+        if(gameObject.name == "Sword" || gameObject.name == "Sword (1)" || gameObject.name == "Sword (2)")
         {
              SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
         }
         //play hammer audio
-        if(gameObject.name == "Hammer")
+        if(gameObject.name == "Hammer" || gameObject.name == "Hammer (1)" || gameObject.name == "Hammer (2)")
         {
-             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.sword);
+             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.hammer);
         }
 
         //Lose integrity when shooting
