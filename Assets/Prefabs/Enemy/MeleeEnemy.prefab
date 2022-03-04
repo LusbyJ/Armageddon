@@ -182,6 +182,7 @@ MonoBehaviour:
   distFromTarget: {x: 0, y: 0, z: 0}
   attack: 0
   meleeEnemy: 0
+  flying: 0
   speed: 400
   nextWaypointDistance: 1
   stopwatch: {fileID: 0}
@@ -311,5 +312,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a96feb45a2734047bee5d1264857012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 25
   attack: 0

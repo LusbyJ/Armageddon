@@ -68393,7 +68393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: enemyMax
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: character
@@ -68409,11 +68409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: flyingRangeDamage
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: groundRangeDamage
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: flyingRangeEnemyPrefab
