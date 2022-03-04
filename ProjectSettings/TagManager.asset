@@ -10,6 +10,7 @@ TagManager:
   - Carpal
   - Melee
   - Key
+  - Grenade
   layers:
   - Default
   - TransparentFX
