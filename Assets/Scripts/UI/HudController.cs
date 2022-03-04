@@ -35,10 +35,12 @@ public class HudController : MonoBehaviour
     private Image emergency2Image;
     private Vector2 pinActivePos=new Vector2(0,223);
     private Vector2 pinInactivePos=new Vector2(0,350);
+    private SpawnEnemy spawn;
     public GameObject pinBar;
     public GameObject nameMain;
     public GameObject nameBack;
-
+    public GameObject enemySpawner;
+    public GameObject enemytext;
 
     // Start is called before the first frame update
     void Start()
@@ -52,11 +54,18 @@ public class HudController : MonoBehaviour
       emergency1Image=emergencyLight1.GetComponent<Image>();
       emergency2Image=emergencyLight2.GetComponent<Image>();
       pinPos=pin.GetComponent<targetLerp>();
+      spawn=enemySpawner.GetComponent<SpawnEnemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(spawn.enemiesLeftToKill<=0){
+          enemytext.GetComponent<Text>().text="Key Active";
+        }else{
+          enemytext.GetComponent<Text>().text=spawn.enemiesLeftToKill.ToString()+" Left";
+        }
+
         //if neither arm is active, move lights to their active positions.  Otherwise, move them to inactive positions.
         if(character.GetComponent<PickUp>().item1 == null&&character.GetComponent<PickUp>().item2 == null){
           light1Pos.target=new Vector2(lightActivePos.x,lightActivePos.y);
