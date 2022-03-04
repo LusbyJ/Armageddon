@@ -14,6 +14,7 @@ public class OpenDoor : MonoBehaviour
         {
             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.openDoor);
             animator.SetTrigger("openDoor");
+            PickUp.hasKey = false;
         }
     }
 }
