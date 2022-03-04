@@ -7,6 +7,7 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject meleeEnemyPrefab;
     public GameObject groundRangeEnemyPrefab;
     public GameObject flyingRangeEnemyPrefab;
+    public GameObject pinkey;
     public GameObject stopwatch;
     public float respawnTime = 1f;
     public Vector2 screenBounds;
@@ -15,6 +16,8 @@ public class SpawnEnemy : MonoBehaviour
     public int enemyMax = 5;
     public int groundRangeDamage = 15;
     public int flyingRangeDamage = 15;
+    public int enemiesLeftToKill;
+    bool pinkeySpawned = false;
 
 
 
@@ -61,6 +64,12 @@ public class SpawnEnemy : MonoBehaviour
         enemyCount++;
     }
 
+    private void spawnPinkey()
+    {
+        pinkey.SetActive(true);
+        pinkeySpawned = true;
+    }
+
     IEnumerator enemyWave()
     {
         while (true)
@@ -76,6 +85,10 @@ public class SpawnEnemy : MonoBehaviour
                 else
                     spawnRangeFlyingEnemy();
 
+            }
+            if(enemiesLeftToKill == 0 && !pinkeySpawned)
+            {
+                spawnPinkey();
             }
         }
     }

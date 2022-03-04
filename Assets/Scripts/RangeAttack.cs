@@ -70,6 +70,7 @@ public class RangeAttack : MonoBehaviour
         a.GetComponent<Bullet>().shootDirection = shootDirection;
         a.GetComponent<Bullet>().enemy = gameObject;
         a.GetComponent<Bullet>().damage = damage;
+        a.GetComponent<Bullet>().shotAt = shotAt;
         numBullets++;
         shotAt = Time.time;
     }

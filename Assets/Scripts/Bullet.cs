@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public Rigidbody2D rb;
     public float bulletSpeed;
+    public float shotAt;
     public Vector3 shootDirection;
     public bool enemyFire = false;
     public GameObject enemy;
@@ -62,5 +63,11 @@ public class Bullet : MonoBehaviour
             if (enemy.GetComponent<RangeAttack>().numBullets > 0)
                 enemy.GetComponent<RangeAttack>().numBullets--;
         }
+    }
+
+    void Update()
+    {
+        if (Time.time >= shotAt + 5f)
+            Destroy(gameObject);
     }
 }

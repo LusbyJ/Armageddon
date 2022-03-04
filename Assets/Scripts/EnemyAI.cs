@@ -44,6 +44,8 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         attack = false;
 
+        
+
         if (GetComponentInChildren<MeleeAttack>())
             meleeEnemy = true;
         else

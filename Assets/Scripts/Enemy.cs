@@ -37,5 +37,6 @@ public class Enemy : MonoBehaviour{
         GameObject explodefx = Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
         enemySpawn.GetComponent<SpawnEnemy>().enemyCount--;
+        enemySpawn.GetComponent<SpawnEnemy>().enemiesLeftToKill--;
     }
 }
