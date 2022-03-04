@@ -26,11 +26,11 @@ public class RangeAttack : MonoBehaviour
     //    StartCoroutine("Shoot");
     //}
 
-    
+
     void Update()
     {
         distance = target.position - gameObject.transform.position;
-        if ((distance.x < attackRange.x && distance.x > -attackRange.x) && 
+        if ((distance.x < attackRange.x && distance.x > -attackRange.x) &&
             (distance.y < attackRange.y && distance.y > -attackRange.y))
         {
             shootDirection = target.position;
@@ -49,7 +49,6 @@ public class RangeAttack : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Start Shoot at " + Time.time);
             currentTime = Time.time;
             yield return new WaitForSeconds(waitTime);
             if (attack && (shotAt == null || currentTime >= shotAt+waitTime))
@@ -58,7 +57,6 @@ public class RangeAttack : MonoBehaviour
                 if (numBullets >= maxBullets)
                     attack = false;
             }
-            Debug.Log("End Shoot at " + Time.time);
         }
     }
 
