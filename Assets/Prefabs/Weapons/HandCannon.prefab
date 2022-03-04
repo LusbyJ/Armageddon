@@ -181,9 +181,9 @@ MonoBehaviour:
   holding: 0
   spot: 0
   pickedUp: 0
-  damage: 15
+  damage: 40
   waitTime: 1
-  maxIntegrity: 300
-  integrity: 300
+  maxIntegrity: 200
+  integrity: 200
   weaponIcon: {fileID: 21300000, guid: 936c1417957640d4d90f8e7c0bea0729, type: 3}
   attacking: 0

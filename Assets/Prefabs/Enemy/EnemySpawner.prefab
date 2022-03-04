@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeEnemyPrefab: {fileID: 5254351367033710154, guid: e52b19726c556c145a5783f67627a865, type: 3}
+  groundRangeEnemyPrefab: {fileID: 0}
+  flyingRangeEnemyPrefab: {fileID: 0}
+  stopwatch: {fileID: 0}
   respawnTime: 3
   screenBounds: {x: 0, y: 0}
   character: {fileID: 0}
   enemyCount: 0
   enemyMax: 10
+  groundRangeDamage: 30
+  flyingRangeDamage: 30
