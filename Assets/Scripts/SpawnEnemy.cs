@@ -32,7 +32,7 @@ public class SpawnEnemy : MonoBehaviour
     private void spawnMeleeEnemy()
     {
         GameObject a = Instantiate(meleeEnemyPrefab) as GameObject;
-        a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
+        a.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(3.44f, screenBounds.y));
         a.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
         a.GetComponent<Enemy>().enemySpawn = gameObject;
         a.GetComponent<EnemyAI>().stopwatch = stopwatch;
@@ -42,7 +42,7 @@ public class SpawnEnemy : MonoBehaviour
     private void spawnRangeGroundEnemy()
     {
         GameObject b = Instantiate(groundRangeEnemyPrefab) as GameObject;
-        b.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
+        b.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(3.44f, screenBounds.y));
         b.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
         b.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
         b.GetComponent<Enemy>().enemySpawn = gameObject;
@@ -54,7 +54,7 @@ public class SpawnEnemy : MonoBehaviour
     private void spawnRangeFlyingEnemy()
     {
         GameObject c = Instantiate(flyingRangeEnemyPrefab) as GameObject;
-        c.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(0f, screenBounds.y));
+        c.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), Random.Range(3.44f, screenBounds.y));
         c.GetComponent<EnemyAI>().target = character.GetComponent<Transform>();
         c.GetComponent<RangeAttack>().target = character.GetComponent<Transform>();
         c.GetComponent<Enemy>().enemySpawn = gameObject;
