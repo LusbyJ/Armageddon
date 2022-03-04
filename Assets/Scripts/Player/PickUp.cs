@@ -35,8 +35,6 @@ public class PickUp : MonoBehaviour
         //Call Pick up item on user input
         if (Input.GetButtonDown("Pickup") || Input.GetKeyDown(KeyCode.F))
         {
-            if (!left || !right)
-            {
                 if (character.GetComponent<PlayerController>().m_FacingRight == false)
                 {
                     flip = true;
@@ -47,7 +45,7 @@ public class PickUp : MonoBehaviour
                     flip = false;
                 }
                 pickUpItem();
-            }
+
         }
 
         //Call throw item upon user input
@@ -76,8 +74,16 @@ public class PickUp : MonoBehaviour
                 pickUpItem.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            if(pickUpItem.gameObject.tag == "Key" && !left && !right)
+            if(pickUpItem.gameObject.tag == "Key")
             {
+                if(left == true)
+                {
+                    throwArm(item1,1);
+                }
+                if(right == true)
+                {
+                    throwArm(item2,2);
+                }
                 item1 = pickUpItem.gameObject;
                 item1.GetComponent<Weapon>().spot = 1;
                 item1.GetComponent<Weapon>().pickedUp = 1;
