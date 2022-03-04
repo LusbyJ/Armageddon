@@ -17,7 +17,7 @@ public class SpawnEnemy : MonoBehaviour
     public int groundRangeDamage = 15;
     public int flyingRangeDamage = 15;
     public int enemiesLeftToKill;
-    bool pinkeySpawned = false;
+    bool pinkeySpawned;
 
 
 
@@ -26,6 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         //Bounds hard coded. Need to adjust depending on the map or keep each map roughly the same size
         screenBounds = new Vector2 (46.5f, 11.2f);
+        pinkeySpawned = false;
         StartCoroutine(enemyWave());
     }
 
