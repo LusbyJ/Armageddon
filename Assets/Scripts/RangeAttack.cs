@@ -11,7 +11,9 @@ public class RangeAttack : MonoBehaviour
     public GameObject bullet;
     public Vector3 shootDirection;
     Vector3 distance;
-    float waitTime = 50f;
+    public float waitTime = 3f;
+    float shotAt;
+    float currentTime;
     public int numBullets = 0;
     public int maxBullets = 5;
     public int damage;
@@ -47,13 +49,16 @@ public class RangeAttack : MonoBehaviour
     {
         while (true)
         {
-            if (attack)
+            Debug.Log("Start Shoot at " + Time.time);
+            currentTime = Time.time;
+            yield return new WaitForSeconds(waitTime);
+            if (attack && (shotAt == null || currentTime >= shotAt+waitTime))
             {
                 spawnBullet();
                 if (numBullets >= maxBullets)
                     attack = false;
             }
-            yield return new WaitForSeconds(waitTime*2);
+            Debug.Log("End Shoot at " + Time.time);
         }
     }
 
@@ -66,5 +71,6 @@ public class RangeAttack : MonoBehaviour
         a.GetComponent<Bullet>().enemy = gameObject;
         a.GetComponent<Bullet>().damage = damage;
         numBullets++;
+        shotAt = Time.time;
     }
 }
