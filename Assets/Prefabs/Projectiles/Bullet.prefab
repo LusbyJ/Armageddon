@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674178122323808298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.5479522, y: 0.83650964, z: 0.00000002395175, w: -0.000000036564998}
   m_LocalPosition: {x: -9.18931, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -137,6 +137,7 @@ MonoBehaviour:
   damage: 4
   rb: {fileID: 3584248264936015592}
   bulletSpeed: 15
+  shotAt: 0
   shootDirection: {x: 0, y: 0, z: 0}
   enemyFire: 0
   enemy: {fileID: 0}

@@ -67180,7 +67180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1024236378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -68178,6 +68178,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
+      propertyPath: pinkey
+      value: 
+      objectReference: {fileID: 1024236377}
+    - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: enemyMax
       value: 10
       objectReference: {fileID: 0}
@@ -68189,6 +68193,10 @@ PrefabInstance:
       propertyPath: stopwatch
       value: 
       objectReference: {fileID: 1626946101}
+    - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
+      propertyPath: enemiesLeftToKill
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1408623290379991749, guid: fdf8782e8b08ea246bdcc860007cdba4, type: 3}
       propertyPath: flyingRangeEnemyPrefab
       value: 
