@@ -87,7 +87,7 @@ public class SpawnEnemy : MonoBehaviour
                     spawnRangeFlyingEnemy();
 
             }
-            if(enemiesLeftToKill == 0 && !pinkeySpawned)
+            if(enemiesLeftToKill <= 0 && !pinkeySpawned)
             {
                 spawnPinkey();
             }
