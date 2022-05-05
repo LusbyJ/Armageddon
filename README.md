@@ -1,5 +1,15 @@
 # Armageddon
 Arm-ageddon is 2-D side scroller / platform shooter style game.  Created and built in Unity.  Arm yourself and see if you can survive.
+
+## Requirements
+UNITY 2020.3.26f1
+
+## How to play
+* Clone project into a local directory.
+* Open project in Unity.
+* Navigate to the Scenes folder.
+* Select the MainMenu scene and then click the Unity "Play" button. 
+
 ## Game Overview
 In Arm-ageddon, players take control of a robot with detachable arms.  They must survive an onslaught of enemies in a large, arena-like map, collecting various arms to use as weapons as they search for the P1N Key, which opens the door to beat the level.
 
